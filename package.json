@@ -1,0 +1,21 @@
+{
+  "name": "colismonde",
+  "private": true,
+  "workspaces": [
+    "web",
+    "backend",
+    "shared",
+    "mobile"
+  ],
+  "scripts": {
+    "dev:backend": "npm run dev --workspace backend",
+    "dev:web": "npm run dev --workspace web",
+    "build:shared": "npm run build --workspace shared",
+    "build:backend": "npm run build --workspace backend",
+    "build:web": "npm run build --workspace web",
+    "db:migrate": "npm run db:migrate --workspace backend",
+    "db:seed": "npm run db:seed --workspace backend",
+    "db:import-cities": "npm run db:import-cities --workspace backend",
+    "mobile:sync": "npm run sync --workspace mobile"
+  }
+}

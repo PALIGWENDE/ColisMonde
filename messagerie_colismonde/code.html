@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Chat ColisMonde - Paris vers Dakar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e1e3e4",
+                    "outline": "#6f797a",
+                    "on-surface-variant": "#3e494a",
+                    "on-secondary-fixed-variant": "#683d00",
+                    "on-surface": "#191c1d",
+                    "inverse-primary": "#82d3de",
+                    "secondary": "#895100",
+                    "surface-bright": "#f8f9fa",
+                    "primary-fixed": "#9ff0fb",
+                    "on-primary-container": "#9becf7",
+                    "on-tertiary-fixed": "#00201e",
+                    "background": "#f8f9fa",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#82d3de",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-primary": "#ffffff",
+                    "primary": "#00535b",
+                    "outline-variant": "#bec8ca",
+                    "on-secondary-container": "#663b00",
+                    "secondary-fixed-dim": "#ffb86b",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffdcbc",
+                    "surface-tint": "#006972",
+                    "on-tertiary-container": "#a9ece4",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-high": "#e7e8e9",
+                    "primary-container": "#006d77",
+                    "on-secondary-fixed": "#2c1700",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#edeeef",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-fixed": "#acefe7",
+                    "tertiary-container": "#286d67",
+                    "tertiary": "#01544f",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#fd9d1a",
+                    "on-background": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "container-padding-desktop": "40px",
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .font-plus { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .message-shadow { shadow-[0px_4px_20px_rgba(0,109,119,0.05)]; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #bec8ca; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col h-screen overflow-hidden">
+<!-- Top Navigation Anchor (Manual override of Shell for Task Flow) -->
+<header class="bg-surface sticky top-0 z-50 shadow-[0px_4px_20px_rgba(0,109,119,0.05)] px-container-padding-mobile py-4 border-b border-outline-variant/20">
+<div class="flex items-center justify-between gap-4 max-w-5xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center p-2 rounded-xl hover:bg-surface-container-high active:scale-95 transition-all text-on-surface">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-xl object-cover ring-2 ring-primary/10" data-alt="A macro studio photograph of high-quality architectural documents in a pristine white envelope, resting on a clean minimalist desk. The lighting is bright and airy, reflecting a professional and trustworthy logistics atmosphere. The color palette is composed of soft whites, greys, and a subtle teal accent consistent with a premium courier service branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMzuMPABz29IQA0IrbUWkvxv7lF_6JbL9N0e2hNNjSTYhD7VjB9UYZD4I-eOknvN2fkLwKoYCbj1isTOHLVyNEJPOaOTJen4TzZOi7mdLz7aBpfG0VmF-xqMpHBrCyCpqKneeZCGKXt4PDHFqoIc-guRq6bwiqv-6wfg7R2vOH5uxhzSfcGGDH-ZivPite9_GfKF2a_PLONwcIkEfDt8Qy8k5uJRvdDSReF-Drz32W5ESZ2loCxq-3w6z0Oblaw-A0sKnevA2WTWU"/>
+<div class="absolute -bottom-1 -right-1 bg-secondary-container text-on-secondary-fixed text-[10px] px-1.5 py-0.5 rounded-full font-bold">URGENT</div>
+</div>
+<div>
+<h1 class="font-headline-md text-body-md font-bold text-primary flex items-center gap-1">
+                            Paris CDG <span class="material-symbols-outlined text-sm">flight_takeoff</span> Dakar DSS
+                        </h1>
+<p class="text-label-sm text-on-surface-variant">Voyageur : Amadou S.</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-outline-variant text-primary hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-primary-container text-white shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto px-container-padding-mobile py-6 space-y-6 max-w-5xl mx-auto w-full pb-32">
+<!-- Date Header -->
+<div class="flex justify-center">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm text-on-surface-variant font-medium">Aujourd'hui</span>
+</div>
+<!-- Traveler Message (Left) -->
+<div class="flex items-end gap-3 max-w-[85%] md:max-w-[70%]">
+<img class="w-8 h-8 rounded-full object-cover shrink-0" data-alt="Professional portrait of a West African man in his 30s with a warm, friendly smile, wearing a clean, modern navy blue travel polo shirt. The background is a soft-focus modern airport terminal with bright, natural lighting. The image captures a sense of reliability, community trust, and premium service, matching the professional aesthetic of the ColisMonde app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6wFhBd4e6G_r9b9N_4cmFVX_GbgD7ib7kA4KNkOjTZ84fsw311Qk9K107JC7YnKrhXlFbWfG3Bd_rdQtVaL_NxY3NyqDzkihG5rlGFikQCMZsmYphUad-4nJv3lwIZZ6UIv3e9Ccb8YufaURMaoiMBxYRLCxBa-reqlxOj5X0wUTVqZ0Km8r3g0IWt_m6F8WCyySyjQIjAkQ0dUoJcy7nVvqW8H1PUQWGKRis5GSxQAG-f0UnBBzPJxozHcBZd8cQdjd90Wey2eY"/>
+<div class="space-y-1">
+<div class="bg-surface-container-highest text-on-surface p-4 rounded-2xl rounded-bl-none shadow-[0px_4px_20px_rgba(0,109,119,0.05)]">
+<p class="text-body-md">Bonjour ! J'ai bien reçu la demande pour les documents urgents. Je décolle demain à 10h de CDG Terminal 2E.</p>
+</div>
+<p class="text-[10px] text-outline px-1">09:12</p>
+</div>
+</div>
+<!-- My Message (Right) -->
+<div class="flex flex-col items-end gap-1 ml-auto max-w-[85%] md:max-w-[70%]">
+<div class="bg-primary-container text-white p-4 rounded-2xl rounded-br-none shadow-lg">
+<p class="text-body-md">Super, merci Amadou ! Est-ce qu'on peut se retrouver devant le Paul à l'enregistrement du Terminal 2E vers 7h30 ?</p>
+</div>
+<div class="flex items-center gap-1 px-1">
+<p class="text-[10px] text-outline">09:15</p>
+<span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</div>
+</div>
+<!-- Traveler Message (Left) -->
+<div class="flex items-end gap-3 max-w-[85%] md:max-w-[70%]">
+<div class="w-8 shrink-0"></div> <!-- Spacer for second bubble from same person -->
+<div class="space-y-1">
+<div class="bg-surface-container-highest text-on-surface p-4 rounded-2xl rounded-bl-none shadow-[0px_4px_20px_rgba(0,109,119,0.05)]">
+<p class="text-body-md">C'est parfait pour moi. Je porterai une veste bleue et j'aurai un sac à dos noir. Je vous enverrai un message dès que je suis sur place.</p>
+</div>
+<p class="text-[10px] text-outline px-1">09:18</p>
+</div>
+</div>
+<!-- Informative System Card -->
+<div class="flex justify-center px-4">
+<div class="bg-tertiary-fixed/30 border border-tertiary-container/20 rounded-xl p-3 text-center max-w-sm">
+<p class="text-label-sm text-on-tertiary-fixed-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                    Pour votre sécurité, effectuez vos paiements uniquement via l'application.
+                </p>
+</div>
+</div>
+<!-- My Message (Right) -->
+<div class="flex flex-col items-end gap-1 ml-auto max-w-[85%] md:max-w-[70%]">
+<div class="bg-primary-container text-white p-4 rounded-2xl rounded-br-none shadow-lg">
+<p class="text-body-md">Entendu. Je vous transmets mon numéro de téléphone au cas où. C'est le 06 12 34 56 78. À demain !</p>
+</div>
+<div class="flex items-center gap-1 px-1">
+<p class="text-[10px] text-outline">09:22</p>
+<span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</div>
+</div>
+</main>
+<!-- Input Bar -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant/30 px-container-padding-mobile py-4 pb-safe z-50">
+<div class="max-w-5xl mx-auto flex items-center gap-3">
+<button class="w-12 h-12 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors shrink-0">
+<span class="material-symbols-outlined text-[28px]">add_circle</span>
+</button>
+<div class="relative flex-1">
+<input class="w-full bg-surface-container-low border-none rounded-full py-3 px-6 pr-12 focus:ring-2 focus:ring-primary-container text-body-md placeholder:text-outline/70 shadow-inner" placeholder="Écrivez un message..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">mood</span>
+</button>
+</div>
+<button class="w-12 h-12 flex items-center justify-center rounded-full bg-primary-container text-white shadow-md active:scale-90 transition-all shrink-0" id="sendBtn">
+<span class="material-symbols-outlined text-[24px]">send</span>
+</button>
+</div>
+</footer>
+<script>
+        // Simple Micro-interaction for the send button
+        const sendBtn = document.getElementById('sendBtn');
+        const input = document.querySelector('input');
+
+        sendBtn.addEventListener('click', () => {
+            if (input.value.trim() !== "") {
+                // Here we would normally append the message
+                console.log("Message sent:", input.value);
+                input.value = "";
+                
+                // Animated feedback
+                sendBtn.classList.add('rotate-12');
+                setTimeout(() => {
+                    sendBtn.classList.remove('rotate-12');
+                }, 200);
+            }
+        });
+
+        // Handle enter key
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendBtn.click();
+            }
+        });
+    </script>
+</body></html>

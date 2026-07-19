@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#90d3cb",
+                        "primary-container": "#006d77",
+                        "surface-bright": "#f8f9fa",
+                        "outline-variant": "#bec8ca",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-surface-variant": "#3e494a",
+                        "secondary-fixed-dim": "#ffb86b",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary-container": "#fd9d1a",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "inverse-surface": "#2e3132",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffdcbc",
+                        "on-tertiary-container": "#a9ece4",
+                        "on-secondary-fixed-variant": "#683d00",
+                        "on-primary-fixed-variant": "#004f56",
+                        "surface-dim": "#d9dadb",
+                        "secondary": "#895100",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9fa",
+                        "tertiary-container": "#286d67",
+                        "primary-fixed-dim": "#82d3de",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#9ff0fb",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#9becf7",
+                        "primary": "#00535b",
+                        "surface-tint": "#006972",
+                        "tertiary-fixed": "#acefe7",
+                        "surface-container": "#edeeef",
+                        "tertiary": "#01544f",
+                        "on-primary-fixed": "#001f23",
+                        "on-tertiary-fixed": "#00201e",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed": "#2c1700",
+                        "on-secondary-container": "#663b00",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface": "#f8f9fa",
+                        "outline": "#6f797a",
+                        "inverse-primary": "#82d3de",
+                        "surface-container-low": "#f3f4f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "container-padding-desktop": "40px",
+                        "gutter": "16px",
+                        "stack-lg": "32px",
+                        "container-padding-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f5; }
+        .plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .soft-glow { box-shadow: 0px 4px 20px rgba(0, 109, 119, 0.05); }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-low text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface fixed top-0 w-full z-50 flex items-center justify-between px-container-padding-mobile py-4 shadow-sm">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Profil</h1>
+</div>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">settings</span>
+</button>
+</header>
+<main class="pt-20 px-container-padding-mobile max-w-4xl mx-auto space-y-6">
+<!-- Profile Header Section -->
+<section class="flex flex-col items-center pt-4 animate-fade-in">
+<div class="relative">
+<div class="w-24 h-24 rounded-full border-4 border-white shadow-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional, smiling woman in her early 30s with light brown hair, wearing a clean white blazer. She is set against a soft, blurred urban background of Lyon, France, with warm golden hour lighting. The image has a clean, high-end photography style consistent with a premium service brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPCZnmLDVNQh6YH4GJ_yJvK7NHl1SfR5ue47-3WNg1ArLuvAnU2dhClrV1f53pUMphamsufpg2oEe_d01NdMC1cAoIJ624FJpdJSDSLBPNRqXHK1ZrTo0HRYTNOcwutC9hdlIuKI9V0F6UXMUw2Wz0kHLIvCuZprAhYe402Wr3CLJUm9Bkj6hvwXgZhwQfzywKZpcuZnS6-_Kyt4XTxW8Sc892lfdHb1K-koCfaecg4Pamgb6_iaBJBUKpdF4p9AB_bxNTPkDI2GQ"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary rounded-full p-1 border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="text-center mt-4">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center justify-center gap-2">
+                    Sophie Laurent
+                    <span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider font-bold">Vérifié</span>
+</h2>
+<p class="font-body-md text-on-surface-variant flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span> Lyon, France
+                </p>
+<div class="flex items-center justify-center gap-1 mt-2 text-secondary">
+<span class="font-bold text-lg">4.9</span>
+<div class="flex text-amber-500">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="text-on-surface-variant font-label-md">(127 envois)</span>
+</div>
+</div>
+</section>
+<!-- Profile Tabs -->
+<div class="flex p-1 bg-surface-container-high rounded-2xl">
+<button class="flex-1 py-3 text-label-md rounded-xl transition-all duration-200 text-on-surface-variant hover:text-on-surface">
+                En tant qu'expéditeur
+            </button>
+<button class="flex-1 py-3 text-label-md rounded-xl bg-white text-primary font-bold soft-glow transition-all duration-200">
+                En tant que voyageur
+            </button>
+</div>
+<!-- Active Content: En tant que voyageur -->
+<div class="space-y-8 pb-4" id="traveler-content">
+<!-- Earnings Card -->
+<div class="bg-white rounded-2xl p-6 soft-glow border-l-4 border-primary overflow-hidden relative group">
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 rounded-full group-hover:scale-110 transition-transform duration-700"></div>
+<div class="flex justify-between items-start relative z-10">
+<div>
+<p class="text-label-md text-on-surface-variant uppercase tracking-wider font-bold">Mes revenus</p>
+<h3 class="text-display-lg font-display-lg text-primary mt-1">1,240 €</h3>
+</div>
+<span class="bg-primary-container/20 text-primary p-3 rounded-2xl">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</span>
+</div>
+<div class="mt-4 pt-4 border-t border-surface-variant flex justify-between items-center relative z-10">
+<span class="text-label-sm text-on-surface-variant">+12% vs mois dernier</span>
+<a class="text-primary font-bold text-label-md flex items-center gap-1 hover:underline" href="#">
+                        Voir le détail <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Recent Deliveries Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md text-on-surface">Mes livraisons</h4>
+<button class="text-primary text-label-md font-bold">Tout voir</button>
+</div>
+<div class="space-y-4">
+<!-- Card 1 -->
+<div class="bg-white rounded-2xl p-5 soft-glow flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="bg-primary/10 text-primary text-[11px] px-3 py-1 rounded-full font-bold uppercase tracking-wide">Colis Électronique</span>
+<span class="flex items-center gap-1 text-green-600 font-bold text-label-md">
+<span class="material-symbols-outlined text-sm">check_circle</span> Terminé
+                            </span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1">
+<p class="text-label-sm text-on-surface-variant">Départ</p>
+<p class="font-bold text-body-lg">Paris</p>
+</div>
+<div class="flex-none px-4 flex flex-col items-center">
+<div class="w-16 h-[2px] bg-slate-200 relative">
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary bg-white text-lg">flight_takeoff</span>
+</div>
+</div>
+<div class="flex-1 text-right">
+<p class="text-label-sm text-on-surface-variant">Arrivée</p>
+<p class="font-bold text-body-lg">Dakar</p>
+</div>
+</div>
+<div class="pt-4 border-t border-surface-variant flex justify-between items-center">
+<p class="text-label-md text-on-surface-variant">12 Mars 2024</p>
+<p class="text-label-md font-bold text-secondary">Récompense: 45 €</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-2xl p-5 soft-glow flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="bg-primary/10 text-primary text-[11px] px-3 py-1 rounded-full font-bold uppercase tracking-wide">Vêtements de Luxe</span>
+<span class="flex items-center gap-1 text-green-600 font-bold text-label-md">
+<span class="material-symbols-outlined text-sm">check_circle</span> Terminé
+                            </span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1">
+<p class="text-label-sm text-on-surface-variant">Départ</p>
+<p class="font-bold text-body-lg">Lyon</p>
+</div>
+<div class="flex-none px-4 flex flex-col items-center">
+<div class="w-16 h-[2px] bg-slate-200 relative">
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary bg-white text-lg">train</span>
+</div>
+</div>
+<div class="flex-1 text-right">
+<p class="text-label-sm text-on-surface-variant">Arrivée</p>
+<p class="font-bold text-body-lg">Londres</p>
+</div>
+</div>
+<div class="pt-4 border-t border-surface-variant flex justify-between items-center">
+<p class="text-label-md text-on-surface-variant">02 Fév 2024</p>
+<p class="text-label-md font-bold text-secondary">Récompense: 32 €</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-on-surface">Derniers avis</h4>
+<div class="space-y-3">
+<div class="bg-white p-4 rounded-2xl soft-glow border border-surface-variant/30">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A profile portrait of a smiling young man with dark hair and glasses, representing a satisfied customer. Minimalist background, high key lighting, neutral tones, professional quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYz6LvVoPBZ89-Go77yJkn-iEXHu_ZJ4wCiytqnJRCDnuH78T0KM8K_ZEgxGSUSjCZLkyHuypo6y-NXWXA6LYpZogRR5bs5qWd7hGwNkPuub3_3UmhUR0GmjrvjFr-080oVnKFaSehj60lRUSwUdOf_-_jRMmoSuNWtbf3NNCdwRQ74llpTcczAKIUV6K0k2AFExd8ygxf7vOxU_5MKMldB-QZZCLJ574g5-1FhY-md_HcOTXeFTVabKNyNCuZ8Zqld7BOcraOYYE"/>
+</div>
+<span class="font-bold text-label-md">Marc D.</span>
+</div>
+<div class="flex text-amber-500 text-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant italic">"Voyageuse très ponctuelle et colis arrivé en parfait état. Merci Sophie !"</p>
+</div>
+<div class="bg-white p-4 rounded-2xl soft-glow border border-surface-variant/30">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A profile portrait of a middle-aged woman with blonde hair, smiling warmly. Clean and professional lighting, white studio background, high quality portraiture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZSaYJnW-_Pb7fRqTazBDAM2Sx0gP9ZkFinWxcF4_6NJwwD5D_A2-oXV2Q8jNTrGv498ojNK0lF3VLLUqjVPBQ5ldIhrtbLBOvIp1G_a3lRJ489TeTkpwyoRzQbq2CGpNvuJGg59t-8WZ6SnULe5v5F4YxHAufOLIlRlI9-0zG6XUzFM1rl5Ymh1dIJXOVul-eQ8Lh_aCwEcnXIRnB-zM_zGy1EtpckPp87C2DxUrSfIhfzFZVGRF8lX58P8_Os9zaqsU9pr3Ndc"/>
+</div>
+<span class="font-bold text-label-md">Elodie R.</span>
+</div>
+<div class="flex text-amber-500 text-xs">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant italic">"Excellente communication du début à la fin. Très rassurante pour un premier envoi."</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface-container-lowest dark:bg-inverse-surface shadow-lg rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-variant transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Accueil</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-variant transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm mt-1">Rechercher</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-variant transition-colors active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">package_2</span>
+<span class="font-label-sm text-label-sm mt-1">Envois</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profil</span>
+</button>
+</nav>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

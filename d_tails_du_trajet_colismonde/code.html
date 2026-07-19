@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détails du trajet - ColisMonde</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "inverse-surface": "#2e3132",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#ffdcbc",
+                    "on-tertiary-container": "#a9ece4",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "primary-container": "#006d77",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "outline-variant": "#bec8ca",
+                    "surface-variant": "#e1e3e4",
+                    "on-surface-variant": "#3e494a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary-container": "#fd9d1a",
+                    "secondary-fixed-dim": "#ffb86b",
+                    "on-background": "#191c1d",
+                    "on-primary-container": "#9becf7",
+                    "surface-tint": "#006972",
+                    "primary": "#00535b",
+                    "tertiary": "#01544f",
+                    "on-primary-fixed": "#001f23",
+                    "tertiary-fixed": "#acefe7",
+                    "surface-container": "#edeeef",
+                    "on-tertiary-fixed": "#00201e",
+                    "on-surface": "#191c1d",
+                    "on-secondary-fixed": "#2c1700",
+                    "on-secondary-container": "#663b00",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "outline": "#6f797a",
+                    "inverse-primary": "#82d3de",
+                    "on-secondary-fixed-variant": "#683d00",
+                    "on-primary-fixed-variant": "#004f56",
+                    "surface-dim": "#d9dadb",
+                    "secondary": "#895100",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9fa",
+                    "tertiary-container": "#286d67",
+                    "primary-fixed-dim": "#82d3de",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#9ff0fb",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "container-padding-desktop": "40px",
+                    "stack-lg": "32px",
+                    "container-padding-mobile": "20px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            -webkit-font-smoothing: antialiased;
+        }
+        .flight-path {
+            stroke-dasharray: 4 4;
+            animation: dash 20s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -100; }
+        }
+        .plane-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(90deg); }
+            50% { transform: translateY(-5px) rotate(90deg); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 109, 119, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-surface shadow-[0px_4px_20px_rgba(0,109,119,0.05)] flex justify-between items-center px-container-padding-mobile py-4">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Détails du trajet</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+</div>
+</header>
+<main class="flex-1 px-container-padding-mobile pt-stack-md pb-32 max-w-2xl mx-auto w-full">
+<!-- Hero Card: Flight Path -->
+<div class="relative bg-surface-container-lowest rounded-xl p-6 soft-shadow overflow-hidden mb-gutter border border-outline-variant/30">
+<!-- Background Map Trace -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" data-alt="A subtle, minimalist vector world map illustration in light gray tones on a white background, designed as a clean and professional background for a travel application. The map shows soft continental outlines without borders, emphasizing a fluid and global aesthetic consistent with modern logistics and international shipping services." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9rixWqRE2pjk0sbYRmh3LuNEW575BwNutz7rK3MgtrosuIGZiSnMYm_it05BubQz_hj4oZAOOMyUeshLECK3A70D1-WQ-9dc1_XLg-kB--mJfTNS6A8r-RDQjHJZjFH46dq9R14tct04bQ5fw3-wvum5IF4WrL2zZxfdEiW2bfnI2Otlh8vIhEcL76DgG4R--BLLvpR-GWUarzHfY_zRNZ5OYAb2ogcME4Sq5gpZ7Kl4_tbJyyRUH5gzOg1Z5SonMGClf2SSao7Q')"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-full flex justify-between items-center mb-8">
+<div class="text-center">
+<p class="font-headline-md text-headline-md text-primary mb-1">Paris</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">CDG</p>
+</div>
+<div class="flex-1 relative h-10 px-4 flex items-center justify-center">
+<svg class="w-full h-full" fill="none" viewbox="0 0 200 40">
+<path class="flight-path" d="M5 20C50 20 150 20 195 20" stroke="#006D77" stroke-linecap="round" stroke-width="2"></path>
+<g class="plane-float">
+<text fill="#006D77" font-family="Material Symbols Outlined" font-size="24" x="90" y="28">flight</text>
+</g>
+</svg>
+</div>
+<div class="text-center">
+<p class="font-headline-md text-headline-md text-primary mb-1">Dakar</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">DSS</p>
+</div>
+</div>
+<!-- Fast Info Grid -->
+<div class="grid grid-cols-3 gap-4 w-full pt-6 border-t border-outline-variant/30">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary mb-1">calendar_today</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Date</p>
+<p class="font-label-md text-label-md font-bold">14 Oct. 2023</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary mb-1">weight</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Poids</p>
+<p class="font-label-md text-label-md font-bold">5kg disp.</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary mb-1">payments</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Récompense</p>
+<p class="font-label-md text-label-md font-bold text-secondary">12€/kg</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Traveler Profile Section -->
+<section class="mb-gutter">
+<h2 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Voyageur</h2>
+<div class="bg-surface-container-lowest rounded-xl p-4 soft-shadow flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-primary-container/20" data-alt="A professional and friendly portrait of a smiling West African man in his 30s named Amadou, wearing a clean, smart-casual linen shirt. He has a warm and trustworthy expression, with soft natural lighting and a blurred minimalist interior background, conveying reliability and a welcoming personality for a peer-to-peer service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCsgxU1zDRFooltzsu0bAYiWr2XzRWPeUkiAog7lSQlec4cUh2L_XxHmmLfnGIJ4Q3fxQlzqMTr-48pGH65fEwqI7Tl1pAdFqdDRnpFDvjkEd-L61GnJ_6lwYzsZxU0ix0bAuP2_uVs8cz1Uj9cJe90PZoFyVGgVoF9znQuuNy2ii84THIWfJ52CsbuC_qG6FQuHyvHi1W1xgWsejhOux6TtnJbYV4DMrCO5zYETqfVfZhrbOhF8TE_Aewo2_H2oshHx6SOZ2ZZ2E"/>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white p-0.5 rounded-full border-2 border-white">
+<span class="material-symbols-outlined text-[14px] block" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-primary leading-tight">Amadou Diallo</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="font-label-md text-label-md text-on-surface">4.8 <span class="text-on-surface-variant font-normal">(124 avis)</span></p>
+</div>
+</div>
+</div>
+<button class="h-10 px-4 rounded-xl border-2 border-primary text-primary font-label-md flex items-center gap-2 hover:bg-primary/5 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+                    Message
+                </button>
+</div>
+</section>
+<!-- Details Section -->
+<section class="mb-gutter">
+<h2 class="font-label-md text-label-md text-on-surface-variant mb-4 uppercase tracking-wider">Détails de l'envoi</h2>
+<div class="grid grid-cols-1 gap-stack-md">
+<!-- Detail Item -->
+<div class="bg-surface-container-lowest rounded-xl p-4 soft-shadow flex items-center gap-4 border-l-4 border-primary">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">straighten</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Taille maximale</p>
+<p class="font-label-md text-label-md font-semibold">Moyen (Format boîte à chaussures)</p>
+</div>
+</div>
+<!-- Detail Item -->
+<div class="bg-surface-container-lowest rounded-xl p-4 soft-shadow flex items-center gap-4 border-l-4 border-primary">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">category</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Catégories acceptées</p>
+<p class="font-label-md text-label-md font-semibold">Vêtements, Électronique, Documents</p>
+</div>
+</div>
+<!-- Detail Item -->
+<div class="bg-surface-container-lowest rounded-xl p-4 soft-shadow flex items-center gap-4 border-l-4 border-primary">
+<div class="w-12 h-12 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Type d'envoi</p>
+<p class="font-label-md text-label-md font-semibold">Remise en main propre recommandée</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Informational Note -->
+<div class="bg-secondary-container/10 rounded-xl p-4 flex gap-3 items-start border border-secondary-container/20">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Ce voyageur s'est engagé à respecter les délais de livraison. Pensez à bien emballer vos objets fragiles.
+            </p>
+</div>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md p-container-padding-mobile pb-safe shadow-[0px_-4px_20px_rgba(0,109,119,0.05)] border-t border-outline-variant/10">
+<div class="max-w-2xl mx-auto flex items-center justify-between gap-4">
+<div class="hidden sm:block">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Total estimé</p>
+<p class="font-headline-md text-headline-md text-secondary font-bold">~ 60,00 €</p>
+</div>
+<button class="flex-1 h-14 bg-primary text-white rounded-xl font-headline-md text-[18px] font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">calendar_add_on</span>
+                Réserver ce trajet
+            </button>
+</div>
+</footer>
+<!-- Simple Interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                if(icon) {
+                    icon.style.transform = 'scale(0.9)';
+                    setTimeout(() => icon.style.transform = 'scale(1)', 100);
+                }
+            });
+        });
+    </script>
+</body></html>

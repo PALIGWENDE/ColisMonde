@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: colismonde-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: colismonde
+      POSTGRES_PASSWORD: colismonde
+      POSTGRES_DB: colismonde
+    ports:
+      - "5432:5432"
+    volumes:
+      - colismonde-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U colismonde"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  colismonde-postgres-data:

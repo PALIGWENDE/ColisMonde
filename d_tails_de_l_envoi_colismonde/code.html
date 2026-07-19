@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .flight-path {
+            background-image: radial-gradient(circle, #006D77 1.5px, transparent 1.5px);
+            background-size: 8px 100%;
+            background-repeat: repeat-x;
+            height: 2px;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            z-index: 0;
+        }
+        .flight-icon-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(15deg); }
+            50% { transform: translateY(-5px) rotate(15deg); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191c1d",
+                        "surface-dim": "#d9dadb",
+                        "tertiary-fixed-dim": "#90d3cb",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "on-surface-variant": "#3e494a",
+                        "secondary-container": "#fd9d1a",
+                        "surface": "#f8f9fa",
+                        "on-secondary-fixed-variant": "#683d00",
+                        "surface-container": "#edeeef",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed-variant": "#004f56",
+                        "tertiary": "#01544f",
+                        "primary-container": "#006d77",
+                        "primary-fixed": "#9ff0fb",
+                        "primary": "#00535b",
+                        "on-secondary-container": "#663b00",
+                        "surface-tint": "#006972",
+                        "on-primary-container": "#9becf7",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#ffb86b",
+                        "outline-variant": "#bec8ca",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed": "#001f23",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed": "#ffdcbc",
+                        "on-secondary-fixed": "#2c1700",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#a9ece4",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#82d3de",
+                        "on-tertiary-fixed": "#00201e",
+                        "inverse-surface": "#2e3132",
+                        "primary-fixed-dim": "#82d3de",
+                        "outline": "#6f797a",
+                        "background": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#acefe7",
+                        "tertiary-container": "#286d67",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary": "#895100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "container-padding-mobile": "20px",
+                        "stack-sm": "8px",
+                        "container-padding-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-32">
+<!-- Header Section -->
+<header class="w-full top-0 sticky z-40 bg-surface flex justify-between items-center px-container-padding-mobile py-4 shadow-[0px_4px_20px_rgba(0,109,119,0.05)]">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary text-2xl">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Détails de l'envoi</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="language">language</span>
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="px-container-padding-mobile pt-6 space-y-6">
+<!-- Status Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_4px_20px_rgba(0,109,119,0.05)] relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full">En transit</span>
+<p class="font-label-sm text-label-sm text-outline pt-2">Réf : CM-99214-DXB</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary font-bold">185€</p>
+<p class="font-label-sm text-label-sm text-outline">Récompense voyageur</p>
+</div>
+</div>
+<!-- Flight Path Visualization -->
+<div class="relative py-8 flex justify-between items-center px-2">
+<div class="flight-path"></div>
+<div class="z-10 bg-surface-container-lowest p-1 rounded-full ring-4 ring-surface">
+<div class="bg-primary-container/10 w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-3xl flight-icon-float">flight</span>
+</div>
+<div class="z-10 bg-surface-container-lowest p-1 rounded-full ring-4 ring-surface">
+<div class="bg-primary-container/10 w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center text-center mt-2">
+<div class="w-1/3">
+<p class="font-label-md text-label-md text-on-surface">Dubaï</p>
+<p class="font-label-sm text-label-sm text-outline">DXB</p>
+</div>
+<div class="w-1/3">
+<span class="font-label-sm text-label-sm text-primary bg-primary-fixed/30 px-2 py-1 rounded">3,200 km</span>
+</div>
+<div class="w-1/3">
+<p class="font-label-md text-label-md text-on-surface">Mumbai</p>
+<p class="font-label-sm text-label-sm text-outline">BOM</p>
+</div>
+</div>
+</div>
+<!-- Traveler Card -->
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-[0px_4px_20px_rgba(0,109,119,0.05)]">
+<h3 class="font-label-md text-label-md text-outline mb-4">Voyageur certifié</h3>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full border-2 border-primary-container/20 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly traveler in a bright airport terminal setting, smiling warmly. Soft, high-key lighting creates a professional and trustworthy appearance, with a clean and minimalist aesthetic in light-mode colors like white and teal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmWLU7P950P4n8ju0ZI14GAw5UxQ3FdhdGIvqlG9gj3Koq2a94olt_4HvvbncScnxaLaHhAtQ0fQO0UpWuclg8bi-Ji7uR0KB0RccvCbQYHfYtdUqFhNhhBj-F6YE1oABdJAKOISvPR-w8_DX3LY7RaOccgn1_W6GryIpDk0VvFSUsLuevZGj4zkZJYwordzSYqjtWnDENdQyY_3OF6D3IqyTtb9A6WmgCT9g1F7Nq1wC2gVla9jLRJlkB_APcIYjzGCStipmABwc"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Arjun Sharma</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">4.9 (124 envois)</p>
+</div>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-4 py-2 rounded-xl active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">chat</span>
+                    Contacter
+                </button>
+</div>
+</div>
+<!-- Package Details Grid -->
+<div class="space-y-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Détails du colis</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary-container">weight</span>
+<p class="font-label-sm text-label-sm text-outline">Poids</p>
+<p class="font-label-md text-label-md text-on-surface">2.5 kg</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary-container">straighten</span>
+<p class="font-label-sm text-label-sm text-outline">Taille</p>
+<p class="font-label-md text-label-md text-on-surface">Moyen (Sacs)</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary-container">verified_user</span>
+<p class="font-label-sm text-label-sm text-outline">Assurance</p>
+<p class="font-label-md text-label-md text-on-surface">Premium (500€)</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary-container">inventory_2</span>
+<p class="font-label-sm text-label-sm text-outline">Contenu</p>
+<p class="font-label-md text-label-md text-on-surface">Électronique</p>
+</div>
+</div>
+</div>
+<!-- Timeline Section -->
+<div class="bg-surface-container-lowest rounded-xl p-6 shadow-[0px_4px_20px_rgba(0,109,119,0.05)]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Suivi de l'envoi</h3>
+<div class="space-y-8 relative">
+<div class="absolute left-[11px] top-2 bottom-2 w-0.5 border-l-2 border-dashed border-outline-variant"></div>
+<div class="relative pl-10 flex justify-between items-start">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white text-[14px]">done</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Colis récupéré</p>
+<p class="font-label-sm text-label-sm text-outline">Aujourd'hui, 09:45 • Dubaï Centre</p>
+</div>
+</div>
+<div class="relative pl-10 flex justify-between items-start">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary-container flex items-center justify-center z-10 animate-pulse">
+<div class="w-2.5 h-2.5 bg-white rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">En transit aérien</p>
+<p class="font-label-sm text-label-sm text-primary">Prévu aujourd'hui à 22:30</p>
+</div>
+</div>
+<div class="relative pl-10 flex justify-between items-start opacity-40">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-outline-variant flex items-center justify-center z-10">
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Arrivée à Mumbai</p>
+<p class="font-label-sm text-label-sm text-outline">Demain, 06:15</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface flex justify-around items-center px-4 py-2 pb-safe shadow-[0px_-4px_20px_rgba(0,109,119,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Rechercher</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/10 text-primary rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="package_2" style="font-variation-settings: 'FILL' 1;">package_2</span>
+<span class="font-label-sm text-label-sm">Envois</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the traveler contact button
+        const contactBtn = document.querySelector('button.bg-secondary');
+        if (contactBtn) {
+            contactBtn.addEventListener('click', () => {
+                const icon = contactBtn.querySelector('.material-symbols-outlined');
+                icon.style.transform = 'rotate(-15deg) scale(1.2)';
+                setTimeout(() => {
+                    icon.style.transform = 'rotate(0) scale(1)';
+                }, 200);
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ColisMonde - Crowdshipping International</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#191c1d",
+                    "surface-dim": "#d9dadb",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-surface-variant": "#3e494a",
+                    "secondary-container": "#fd9d1a",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed-variant": "#683d00",
+                    "surface-container": "#edeeef",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed-variant": "#004f56",
+                    "tertiary": "#01544f",
+                    "primary-container": "#006d77",
+                    "primary-fixed": "#9ff0fb",
+                    "primary": "#00535b",
+                    "on-secondary-container": "#663b00",
+                    "surface-tint": "#006972",
+                    "on-primary-container": "#9becf7",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#ffb86b",
+                    "outline-variant": "#bec8ca",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#ffdcbc",
+                    "on-secondary-fixed": "#2c1700",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#a9ece4",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#82d3de",
+                    "on-tertiary-fixed": "#00201e",
+                    "inverse-surface": "#2e3132",
+                    "primary-fixed-dim": "#82d3de",
+                    "outline": "#6f797a",
+                    "background": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#acefe7",
+                    "tertiary-container": "#286d67",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary": "#895100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "container-padding-mobile": "20px",
+                    "stack-sm": "8px",
+                    "container-padding-desktop": "40px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .soft-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 109, 119, 0.05);
+        }
+        .flight-path {
+            background-image: radial-gradient(circle, #006D77 1px, transparent 1px);
+            background-size: 8px 8px;
+            height: 2px;
+            width: 100%;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-on-background shadow-[0px_4px_20px_rgba(0,109,119,0.05)]">
+<div class="flex justify-between items-center px-container-padding-mobile py-4 w-full">
+<div class="flex items-center gap-3">
+<img alt="ColisMonde Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4DRWDtQT2dXof4YFryw51RIDm-OWf-sgSH1jTe_CEND-AwtiB4bEZYEezYcG0SnKRDX8BCk4sxBs-OxtqHABmfOYi2waKk0wqujaV9Hz4u4HHOml8xdNTu9QM_EnPs30pc8ZNnWRVZyS6J9M_tqog-eQ_UJVZxWHa1Q3O1NDtAunP6sS4oUpSdA9ks2EyBebcfoQS5SbYOtd5J_JpPDnF9_edM8sPJ79v8-IfgUL6fux7D7w8L5ZzKs4oVkLoav3O2rCpXMK2doY"/>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">ColisMonde</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="language">language</button>
+<div class="relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<span class="absolute -top-1 -right-1 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
+</span>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-padding-mobile">
+<!-- Hero Section -->
+<section class="py-12 md:py-20">
+<div class="flex flex-col md:flex-row items-center gap-10">
+<div class="flex-1 space-y-6">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary-container/10 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="public">public</span>
+<span>Crowdshipping de confiance</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-background max-w-xl">
+                        Envoyez vos colis partout dans le monde avec des voyageurs de confiance
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Une plateforme solidaire et sécurisée pour expédier vos paquets à moindre coût tout en permettant aux voyageurs d'amortir leurs trajets.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="bg-primary-container text-white px-8 py-4 rounded-xl font-label-md text-label-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+                            Envoyer un colis
+                        </button>
+<button class="border-2 border-primary-container text-primary-container px-8 py-4 rounded-xl font-label-md text-label-md hover:bg-primary-container/5 transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="travel_explore">travel_explore</span>
+                            Proposer un trajet
+                        </button>
+</div>
+</div>
+<div class="flex-1 w-full relative hidden md:block">
+<div class="relative w-full aspect-square rounded-[40px] overflow-hidden soft-shadow border-8 border-white">
+<img class="w-full h-full object-cover" data-alt="A premium high-resolution photograph of a diverse group of modern travelers in a bright, airy airport terminal. They are smiling and holding neatly wrapped packages, interacting in a warm and friendly manner. The lighting is soft and golden, creating an atmosphere of trust and community. The colors are dominated by the brand's teal and soft whites, with subtle warm accents of amber in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtcXYIXY2qI5GITKHzQ8s0vYP0XpwP1G-5c9vPCbGxmR8up8z1cE_D-R9uUTP9zqoxm7knLK8BKhZdr65ZSmsUD3tVwKVV8Hnj74YeUlcEX0QyXMFQDzQEda59z57_YtlGXkZ2Y8aVva0CMOCf8Al0-F5kZX0T-crhi6Z6WnSRIftHkUhhK5BLg5y6ZISSseZ-zzJwMqI8l2Towwdl8mjGoCdwCKe_vP9uoCFMUSlsjTWxsx6M091OxE80izu54NYt7VeHjr9eljk"/>
+</div>
+<!-- Floating Stat Cards -->
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl soft-shadow space-y-2">
+<p class="font-headline-md text-headline-md text-primary-container">12.5k+</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Trajets effectués</p>
+</div>
+<div class="absolute top-10 -right-6 glass-card p-6 rounded-2xl soft-shadow flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Profils vérifiés</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">100% de sécurité</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search Bar Component -->
+<div class="relative -mt-10 mb-16 z-10 hidden md:block">
+<div class="bg-white p-6 rounded-3xl soft-shadow border border-surface-variant/50 grid grid-cols-4 gap-4 items-center">
+<div class="space-y-1 px-4">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Départ</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<input class="border-none focus:ring-0 p-0 font-label-md text-label-md w-full bg-transparent" placeholder="Ville ou Pays" type="text"/>
+</div>
+</div>
+<div class="space-y-1 px-4 border-l border-surface-variant">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Destination</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="near_me">near_me</span>
+<input class="border-none focus:ring-0 p-0 font-label-md text-label-md w-full bg-transparent" placeholder="Ville ou Pays" type="text"/>
+</div>
+</div>
+<div class="space-y-1 px-4 border-l border-surface-variant">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Date</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_month">calendar_month</span>
+<input class="border-none focus:ring-0 p-0 font-label-md text-label-md w-full bg-transparent" placeholder="Quand ?" type="text"/>
+</div>
+</div>
+<button class="bg-primary-container text-white py-4 rounded-2xl font-label-md text-label-md hover:opacity-90 transition-opacity">Rechercher un trajet</button>
+</div>
+</div>
+<!-- Trajets Populaires -->
+<section class="py-12">
+<div class="flex justify-between items-end mb-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-background">Trajets populaires</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Les routes les plus fréquentées cette semaine</p>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                    Voir tout <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-white rounded-[24px] overflow-hidden soft-shadow hover:-translate-y-2 transition-transform duration-300 group">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A breathtaking cinematic shot of the Eiffel Tower in Paris at sunset, with warm orange and pink hues reflecting on the Seine river. The style is professional travel photography, sharp detail, with a soft blur in the foreground to create depth. Colors are rich and vibrant, following the brand's premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7X40Q1QAUWx-j5UQY15i-lNWTFbcMTPF0o7x4zHw77g5fe9N1wyav1IZ0nVy6Ja0gJwImFHfwhz0b_rELHxnK0LiJ2dTsX8NW3iLmoMELHUvhE6QXPeyi_8sZ0Bvn-AtjrIdBE7njHgG9om4Zge1ccToXkrb3-cdoFCRIHWK1JntuNJUUSUSyDOA-3AAMNq_K2GMnTmkL41oxPjgY9YoBDk9js_OuLX2BsPMiKRSGBE27ZrK4iU5Rn4rZ4TtL4BDqUMYQKNAsbMA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-6 text-white">
+<p class="font-label-sm text-label-sm opacity-80 uppercase tracking-widest">Aujourd'hui</p>
+<h3 class="font-headline-md text-headline-md">Paris → Dakar</h3>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional-looking young woman traveler with a warm, trustworthy smile. She has a minimalist backpack and is wearing a stylish teal scarf. Bright daylight, soft focus background, high-end photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2Lu9lieZMb8johP0j8WBv3NgThzUb-6Ym6wJx1tPALa9-0ThdPysc5rIGsvKFYVzd6fLq5OXiP0jr2wFr7JOO46qNZvdRu8pykINBBT0iWzRETaMkkjqYg3x-7gMVsOaovVelGOlxRbnbXwxmH3-B3eDQHkz5WNOO9MWnjxUxeQ444W8Zmr-dFpEgPCfp2RqSweDwzPH2AjrxxzLhvmbcjTsXavnTFY_ASAKqruzrWM9d4L1KtKJe2ZFnl9XHNsSVqvOX9NSf3zE"/>
+</div>
+<div>
+<p class="font-label-md text-label-md">Amira L.</p>
+<div class="flex items-center text-secondary text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<span class="bg-secondary-container/20 text-secondary font-label-md text-label-md px-3 py-1 rounded-full">Dès 15€</span>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="luggage">luggage</span>
+<span>Jusqu'à 5kg disponibles</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white rounded-[24px] overflow-hidden soft-shadow hover:-translate-y-2 transition-transform duration-300 group">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="Iconic view of London's Tower Bridge and the Shard at dusk, with the city lights beginning to twinkle. The water of the Thames reflects the blue hour sky. High-contrast, sharp urban photography style, emphasizing modern city life and international connectivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvCj4W9ejX9Yfx5cs2w5jcGa31EI6gV7tCIpngzP4qj0jyPHYyRrCk4PXq3s4edl6-d1s_gVrPNCDLgYtas68PQwjJQrltZ_jH0gy2hHjqJlcwJwCZgrrF1tyuxYBmZIoa2QUf6BR5mS_TNkXTl_F23hedNWfwraoa9CWjln4znS_6UFaAKeJvliTWrHYb4BVwdtdCPg1comvtiEvZWGS7frYBKjaypm-E31ADt5ys0yqVYIJxRr5JZl1ih-6LkkVfFY7GJPrGctg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-6 text-white">
+<p class="font-label-sm text-label-sm opacity-80 uppercase tracking-widest">Demain</p>
+<h3 class="font-headline-md text-headline-md">Londres → Lagos</h3>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A friendly male traveler in his 30s, wearing a crisp white t-shirt and holding a small suitcase. He has a welcoming expression and is positioned in a modern, brightly lit environment. High-quality commercial portraiture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM6NkyxQbsYIDXErEhPdazxK0fkjsrcAMm0siIc52VtfRsRDbqwvhwlDtyRYNx5mn_iBN5Ln30gLS86KEvOawY_iz6Sf5_sraUuEfnjc463BC9sgBbtlaL423RcYgpTyHfmGs8Ag5gV3-kVKdWGv4kqRdMhwAgJ9dMIZrY9Ven7YoHLyIcJSTI6fm65w5WWbYDbRNGqB5RRgtcKn6wgj0fg_OLnQJhTGPgT7xTAlE2iay2nTuZdmpU7eiBO4exdkK4gl6S-ubXFjQ"/>
+</div>
+<div>
+<p class="font-label-md text-label-md">David O.</p>
+<div class="flex items-center text-secondary text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]">star_half</span>
+</div>
+</div>
+</div>
+<span class="bg-secondary-container/20 text-secondary font-label-md text-label-md px-3 py-1 rounded-full">Dès 25€</span>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="inventory">inventory</span>
+<span>Accepte petits colis fragiles</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white rounded-[24px] overflow-hidden soft-shadow hover:-translate-y-2 transition-transform duration-300 group">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="Aerial view of the Burj Khalifa and the Dubai skyline at night, glowing with millions of golden lights. The highway is a river of light with long exposure car trails. Cinematic, luxurious atmosphere that conveys a sense of high-end logistics and global reach." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApumebb_9aPcUgzus_gns1yyo37REA6S25zIXlU7PlX5m7cYXuHnOSwcktelkqe8EV9wnl9cgTYiwpvxMO5AhBZOsATMYToCvckg0RIb8NMEf8a2mYH0M45d73qXFJOxUG9_a-MSjgQHh6pcoWs-55QcHERe1nDyAJme2dycmqQhmhNYNXdr7iGhSBcx9mePmaJXppkCfr2P8gGPr5xeOWHcAp8qaY_LEj0dDTLs6_wqQcvGG2hSWcLKz2GBghHZU_a6T4Qpici-k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-6 text-white">
+<p class="font-label-sm text-label-sm opacity-80 uppercase tracking-widest">14 Octobre</p>
+<h3 class="font-headline-md text-headline-md">Dubaï → Lyon</h3>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close-up of a smiling man with a beard, wearing a business casual outfit. He looks reliable and professional. Soft studio lighting, neutral background, focusing on human connection and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOKB_buxCBqJO-JXcitUOzVYGkCoL2unRUdWDnZW9_srvyFgz0tqTgd0yDDpsPPnRXeUND081pWtclvEGLtIWNqJKCfSZqkiU_s0QszJYv2IW12mmvOvMoCndD-gbW37AmE03H7LrJrSQaUCm2kYu5FrRBYM4gITJTOisSp0ky8AARYcn1YHLRTXjOozxJ7t9VMbI-Y_kyzNrlIKu83RgL9rpy6wX9qzFUkuG5T926K4Q8beRig3zicCqRHTuayEaOSN0T_noZ5Qg"/>
+</div>
+<div>
+<p class="font-label-md text-label-md">Thomas R.</p>
+<div class="flex items-center text-secondary text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<span class="bg-secondary-container/20 text-secondary font-label-md text-label-md px-3 py-1 rounded-full">Dès 20€</span>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="monitor">monitor</span>
+<span>High-tech autorisé</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-16">
+<h2 class="font-headline-md text-headline-md text-on-background mb-10 text-center">Pourquoi choisir ColisMonde ?</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-primary-container text-white p-8 rounded-[32px] md:col-span-2 relative overflow-hidden group">
+<div class="relative z-10 space-y-4">
+<div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="security">security</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Paiement 100% sécurisé</h3>
+<p class="font-body-md text-body-md opacity-90 max-w-md">L'argent n'est débloqué qu'à la réception de votre colis. ColisMonde garantit chaque transaction pour votre tranquillité d'esprit.</p>
+</div>
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700"></div>
+</div>
+<div class="bg-white p-8 rounded-[32px] soft-shadow space-y-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="savings">savings</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Économique</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Jusqu'à 70% moins cher que les transporteurs traditionnels pour vos envois internationaux.</p>
+</div>
+<div class="bg-white p-8 rounded-[32px] soft-shadow space-y-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="eco">eco</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Éco-responsable</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Optimisez l'espace vide dans les bagages existants et réduisez l'empreinte carbone de vos colis.</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-fixed p-8 rounded-[32px] md:col-span-2 flex flex-col md:flex-row items-center gap-8 overflow-hidden">
+<div class="space-y-4 flex-1">
+<h3 class="font-headline-md text-headline-md">Suivi en temps réel</h3>
+<p class="font-body-md text-body-md opacity-90">Communiquez directement avec votre voyageur via notre messagerie intégrée et suivez le trajet de votre colis.</p>
+<button class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full font-label-md text-label-md hover:bg-white/30 transition-colors">Découvrir le chat</button>
+</div>
+<div class="w-full md:w-64 h-40 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
+<div class="w-full px-8 space-y-4">
+<div class="h-2 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-2/3"></div>
+</div>
+<div class="flex justify-between text-xs font-bold text-white uppercase">
+<span>Paris</span>
+<span>En vol</span>
+<span>Dakar</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-on-background shadow-[0px_-4px_20px_rgba(0,109,119,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-container/10 dark:bg-primary-container text-primary dark:text-on-primary-container rounded-xl px-3 py-1 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Rechercher</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+<span class="font-label-sm text-label-sm">Envois</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</a>
+</nav>
+<!-- Desktop Footer Mini -->
+<footer class="hidden md:block py-12 bg-surface-container-lowest mt-20 border-t border-surface-variant/30">
+<div class="max-w-7xl mx-auto px-container-padding-desktop flex justify-between items-center">
+<div class="flex items-center gap-2">
+<img alt="Logo" class="h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4DRWDtQT2dXof4YFryw51RIDm-OWf-sgSH1jTe_CEND-AwtiB4bEZYEezYcG0SnKRDX8BCk4sxBs-OxtqHABmfOYi2waKk0wqujaV9Hz4u4HHOml8xdNTu9QM_EnPs30pc8ZNnWRVZyS6J9M_tqog-eQ_UJVZxWHa1Q3O1NDtAunP6sS4oUpSdA9ks2EyBebcfoQS5SbYOtd5J_JpPDnF9_edM8sPJ79v8-IfgUL6fux7D7w8L5ZzKs4oVkLoav3O2rCpXMK2doY"/>
+<span class="font-headline-md text-headline-md text-primary-container">ColisMonde</span>
+</div>
+<div class="flex gap-8 font-label-md text-label-md text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">À propos</a>
+<a class="hover:text-primary transition-colors" href="#">Aide</a>
+<a class="hover:text-primary transition-colors" href="#">Conditions</a>
+<a class="hover:text-primary transition-colors" href="#">Confidentialité</a>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="facebook">face_nod</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-surface-variant flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="language">public</span>
+</button>
+</div>
+</div>
+<div class="text-center mt-8 font-label-sm text-label-sm text-on-surface-variant opacity-60">
+            © 2024 ColisMonde International. Fait avec passion pour les voyageurs.
+        </div>
+</footer>
+<script>
+        // Subtle interaction for the header on scroll
+        window.onscroll = function() {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 20) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-[0px_4px_20px_rgba(0,109,119,0.05)]');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-[0px_4px_20px_rgba(0,109,119,0.05)]');
+            }
+        };
+
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.96)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

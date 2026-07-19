@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Profil ColisMonde</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#191c1d",
+                    "surface-dim": "#d9dadb",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-surface-variant": "#3e494a",
+                    "secondary-container": "#fd9d1a",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed-variant": "#683d00",
+                    "surface-container": "#edeeef",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary-fixed-variant": "#004f56",
+                    "tertiary": "#01544f",
+                    "primary-container": "#006d77",
+                    "primary-fixed": "#9ff0fb",
+                    "primary": "#00535b",
+                    "on-secondary-container": "#663b00",
+                    "surface-tint": "#006972",
+                    "on-primary-container": "#9becf7",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#ffb86b",
+                    "outline-variant": "#bec8ca",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#ffdcbc",
+                    "on-secondary-fixed": "#2c1700",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#a9ece4",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#82d3de",
+                    "on-tertiary-fixed": "#00201e",
+                    "inverse-surface": "#2e3132",
+                    "primary-fixed-dim": "#82d3de",
+                    "outline": "#6f797a",
+                    "background": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#acefe7",
+                    "tertiary-container": "#286d67",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary": "#895100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "container-padding-mobile": "20px",
+                    "stack-sm": "8px",
+                    "container-padding-desktop": "40px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8F9FA;
+            color: #191c1d;
+            -webkit-font-smoothing: antialiased;
+        }
+        .soft-glow {
+            box-shadow: 0px 4px 20px rgba(0, 109, 119, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-nav-item {
+            font-variation-settings: 'FILL' 1;
+        }
+        .flight-path {
+            background-image: radial-gradient(#bec8ca 1px, transparent 1px);
+            background-size: 8px 8px;
+            height: 1px;
+            width: 100%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-surface shadow-[0px_4px_20px_rgba(0,109,119,0.05)] flex justify-between items-center px-container-padding-mobile py-4">
+<div class="flex items-center gap-3 active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-primary">language</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ColisMonde</h1>
+<div class="flex items-center gap-3 active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</div>
+</header>
+<main class="px-container-padding-mobile pt-6 max-w-md mx-auto">
+<!-- User Profile Header Section -->
+<section class="flex flex-col items-center text-center mb-8">
+<div class="relative group">
+<div class="w-28 h-28 rounded-full border-4 border-white soft-glow overflow-hidden mb-4 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a young traveler in a modern minimalist setting. The lighting is soft and high-key, emphasizing a clean and trustworthy look. The person has a warm smile, wearing premium casual attire, set against a blurred background of a modern airport lounge with soft teal and amber tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2bnE11ZYpL0boA8ejJyfPD_P41MpJ42PZDY7nxmqhArTFPz71rSQuT61dGNu06SY1CxHa28-yeH8hAQnKGgfMqv2jHHtKFgCOetJAABMe3aQxMkgBNOXhlPq6ZZjPGXMeifdM1fJ2stCO-R64pmeh9LQoj3KmXlYLXzkWJgFe9-UX08um_oIXBjUA4ny3LP7cPYZYZ1861_tGbvxDGAtBTRsZnAPjk-xHb0XY06uc-jXFfX7wlVhhZD7sjvqKsSiMEE2abMqbctU"/>
+</div>
+<div class="absolute bottom-4 right-0 bg-primary rounded-full p-1 border-2 border-white">
+<span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Jean-Michel Dupont</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="font-label-md text-label-md text-on-surface-variant">France, Lyon</span>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 w-full mt-8 bg-white rounded-xl soft-glow p-4">
+<div class="flex flex-col items-center">
+<span class="font-headline-md text-headline-md text-primary">24</span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Envois</span>
+</div>
+<div class="flex flex-col items-center border-x border-outline-variant">
+<span class="font-headline-md text-headline-md text-primary">12</span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Trajets</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-1">
+<span class="font-headline-md text-headline-md text-primary">4.9</span>
+<span class="material-symbols-outlined text-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Note</span>
+</div>
+</div>
+</section>
+<!-- Profile Progress/Trust Banner (Premium Touch) -->
+<div class="bg-primary-container/10 border border-primary-container/20 rounded-xl p-4 mb-8 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary-container p-2 rounded-lg">
+<span class="material-symbols-outlined text-white">verified_user</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Profil Vérifié Premium</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Identité et documents validés</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</div>
+<!-- Menu List -->
+<div class="space-y-4">
+<h3 class="font-label-md text-label-md text-outline px-1 uppercase tracking-widest">Général</h3>
+<div class="bg-white rounded-xl soft-glow overflow-hidden">
+<!-- Mes documents -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="font-body-md text-body-md">Mes documents</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<div class="mx-4 h-[1px] bg-outline-variant/30"></div>
+<!-- Paramètres de paiement -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="font-body-md text-body-md">Paramètres de paiement</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<div class="mx-4 h-[1px] bg-outline-variant/30"></div>
+<!-- Aide -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</div>
+<span class="font-body-md text-body-md">Aide</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+<h3 class="font-label-md text-label-md text-outline px-1 mt-8 uppercase tracking-widest">Compte</h3>
+<div class="bg-white rounded-xl soft-glow overflow-hidden mb-8">
+<!-- Déconnexion -->
+<button class="w-full flex items-center justify-between p-4 hover:bg-error/5 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<span class="font-body-md text-body-md text-error font-medium">Déconnexion</span>
+</div>
+</button>
+</div>
+</div>
+<!-- App Version Info -->
+<div class="text-center py-6 opacity-40">
+<p class="font-label-sm text-label-sm">ColisMonde v2.4.0 (Build 892)</p>
+<p class="font-label-sm text-label-sm mt-1">Fait avec passion pour les voyageurs</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-[0px_-4px_20px_rgba(0,109,119,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm mt-1">Rechercher</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<span class="font-label-sm text-label-sm mt-1">Envois</span>
+</a>
+<!-- Active Tab: Profil -->
+<a class="flex flex-col items-center justify-center bg-primary-container/10 text-primary rounded-xl px-3 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined active-nav-item">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profil</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and subtle effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.97)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = 'scale(1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

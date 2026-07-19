@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paiement Réussi - ColisMonde</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-primary": "#ffffff",
+                    "primary": "#00535b",
+                    "outline-variant": "#bec8ca",
+                    "on-secondary-container": "#663b00",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "on-surface": "#191c1d",
+                    "inverse-primary": "#82d3de",
+                    "secondary": "#895100",
+                    "surface-container-highest": "#e1e3e4",
+                    "outline": "#6f797a",
+                    "on-surface-variant": "#3e494a",
+                    "on-secondary-fixed-variant": "#683d00",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#82d3de",
+                    "surface-bright": "#f8f9fa",
+                    "primary-fixed": "#9ff0fb",
+                    "on-primary-container": "#9becf7",
+                    "on-tertiary-fixed": "#00201e",
+                    "background": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#006d77",
+                    "on-secondary-fixed": "#2c1700",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#edeeef",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#fd9d1a",
+                    "on-background": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-fixed": "#acefe7",
+                    "tertiary-container": "#286d67",
+                    "tertiary": "#01544f",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb86b",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary-fixed": "#ffdcbc",
+                    "surface-tint": "#006972",
+                    "on-tertiary-container": "#a9ece4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "stack-md": "16px",
+                    "container-padding-desktop": "40px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .animate-check {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: dash 0.6s ease-out forwards 0.3s;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+        .success-glow {
+            box-shadow: 0px 4px 20px rgba(0, 109, 119, 0.15);
+        }
+        .flight-path {
+            stroke-dasharray: 4 4;
+            animation: flow 20s linear infinite;
+        }
+        @keyframes flow {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen font-body-md flex flex-col items-center">
+<!-- Subtle Background Decoration -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden opacity-30">
+<svg class="absolute top-0 left-0" height="100%" viewbox="0 0 400 800" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path class="flight-path" d="M-50,200 Q150,150 450,250" fill="none" stroke="#006D77" stroke-width="1"></path>
+<path class="flight-path" d="M-50,400 Q200,450 450,350" fill="none" stroke="#006D77" stroke-width="1" style="animation-delay: -5s;"></path>
+</svg>
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 w-full max-w-md px-container-padding-mobile py-stack-lg flex flex-col items-center">
+<!-- Success Animation/Icon -->
+<div class="relative mt-stack-lg mb-stack-md">
+<div class="w-24 h-24 rounded-full bg-primary-container/10 flex items-center justify-center success-glow animate-pulse">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+</div>
+</div>
+<!-- Headline & Subheadline -->
+<div class="text-center mb-stack-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Paiement réussi !</h1>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">
+                Votre colis est désormais assuré et prêt à être expédié.
+            </p>
+</div>
+<!-- Security Illustration Bento-like Card -->
+<div class="w-full bg-surface-container-lowest rounded-2xl p-6 mb-stack-md shadow-[0px_4px_20px_rgba(0,109,119,0.05)] border border-outline-variant/20 overflow-hidden relative">
+<div class="flex items-center gap-4 relative z-10">
+<div class="w-12 h-12 flex-shrink-0 bg-tertiary-fixed rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-weight="fill">verified_user</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Transaction sécurisée</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Protection ColisMonde active</p>
+</div>
+</div>
+<!-- Abstract background shape -->
+<div class="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-fixed/30 rounded-full blur-2xl"></div>
+</div>
+<!-- Transaction Details Card -->
+<div class="w-full bg-white rounded-2xl shadow-[0px_4px_20px_rgba(0,109,119,0.05)] overflow-hidden border border-outline-variant/10">
+<div class="p-6">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Récapitulatif</span>
+<span class="font-label-sm text-label-sm px-2 py-1 bg-secondary-container/10 text-secondary rounded-full font-bold">Payé</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-surface-variant pb-4">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">ID Transaction</p>
+<p class="font-label-md text-label-md text-on-surface">#CMD-98234-ZYX</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer active:scale-95 transition-transform">content_copy</span>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Montant Total</p>
+<p class="font-headline-md text-headline-md text-primary">42,50 €</p>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Date</p>
+<p class="font-label-md text-label-md text-on-surface">Aujourd'hui, 14:32</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Delivery Motif Graphic -->
+<div class="h-32 w-full relative bg-surface-container-low overflow-hidden">
+<div class="absolute inset-0 opacity-40">
+<div class="w-full h-full bg-cover bg-center" data-alt="A clean, minimalist 3D isometric illustration of a small delivery box moving along a dotted path toward a stylized home icon. The scene is rendered in soft teal and white tones with warm amber accents, representing safe international transit in a premium light-mode aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC609jnFhiLp5cCrwLZYLy1uLyBRVfZ76ngJmimN4sBOoRZAS_yXg67WUWSNehCk76D_Ne8eLXGS9E6kXHLDR2aJeXR2KePsILHDoMaSVSexywRZU_hhPGOIfbve_NK6wAYz4DVeUvCZpPVnF8-amSH0khMyxaRxwe74bh9KQ7zIbbTQabAdYFjWlfqKSEt1zJbzAh6JGV1QP8pJ8xj0wVYicuaWQDOiWQpMkRlq6XiYcmAm0Orcdaln8mhEb4cJ89FY238Q_A8oio')"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+</div>
+</div>
+<!-- Trust Badge -->
+<div class="flex items-center gap-2 mt-8 mb-stack-lg">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">shield</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Assurance multirisque incluse</span>
+</div>
+<!-- Action Buttons -->
+<div class="w-full space-y-4 mt-auto">
+<button class="w-full bg-primary text-white py-4 px-6 rounded-2xl font-label-md text-label-md flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-xl">package_2</span>
+                Suivre mon colis
+            </button>
+<button class="w-full bg-transparent border-2 border-primary text-primary py-4 px-6 rounded-2xl font-label-md text-label-md active:scale-[0.98] transition-all">
+                Retour à l'accueil
+            </button>
+</div>
+</main>
+<!-- Success Confetti/Atmospheric Micro-interaction -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple subtle interaction for the copy button
+            const copyBtn = document.querySelector('.material-symbols-outlined[data-icon="content_copy"]');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    copyBtn.textContent = 'check';
+                    copyBtn.classList.add('text-primary');
+                    setTimeout(() => {
+                        copyBtn.textContent = 'content_copy';
+                        copyBtn.classList.remove('text-primary');
+                    }, 2000);
+                });
+            }
+
+            // Button haptic simulation
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('touchstart', () => {
+                    if (window.navigator.vibrate) window.navigator.vibrate(10);
+                });
+            });
+        });
+    </script>
+</body></html>

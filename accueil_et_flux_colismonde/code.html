@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>ColisMonde - Accueil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#acefe7",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed-variant": "#683d00",
+                    "surface-container": "#edeeef",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "background": "#f8f9fa",
+                    "on-tertiary-container": "#a9ece4",
+                    "surface-bright": "#f8f9fa",
+                    "on-surface": "#191c1d",
+                    "tertiary-container": "#286d67",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-fixed-dim": "#ffb86b",
+                    "on-primary-fixed": "#001f23",
+                    "error-container": "#ffdad6",
+                    "primary": "#00535b",
+                    "on-secondary-container": "#663b00",
+                    "tertiary": "#01544f",
+                    "surface-dim": "#d9dadb",
+                    "outline-variant": "#bec8ca",
+                    "on-tertiary-fixed": "#00201e",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary-fixed": "#2c1700",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-container": "#006d77",
+                    "secondary-fixed": "#ffdcbc",
+                    "outline": "#6f797a",
+                    "on-surface-variant": "#3e494a",
+                    "primary-fixed": "#9ff0fb",
+                    "on-primary-fixed-variant": "#004f56",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-container": "#fd9d1a",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#895100",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "on-error": "#ffffff",
+                    "on-background": "#191c1d",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#9becf7",
+                    "primary-fixed-dim": "#82d3de",
+                    "inverse-primary": "#82d3de",
+                    "surface-tint": "#006972"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-padding-desktop": "40px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px",
+                    "gutter": "16px",
+                    "stack-md": "16px",
+                    "container-padding-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .flight-path {
+            background-image: radial-gradient(#bec8ca 1px, transparent 1px);
+            background-size: 8px 1px;
+            background-repeat: repeat-x;
+            height: 1px;
+            width: 100%;
+            position: relative;
+        }
+        .soft-glow {
+            box-shadow: 0px 4px 20px rgba(0, 109, 119, 0.05);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-32">
+<!-- Top AppBar Component -->
+<header class="w-full top-0 sticky z-40 bg-surface shadow-[0px_4px_20px_rgba(0,109,119,0.05)] flex justify-between items-center px-container-padding-mobile py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">language</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ColisMonde</h1>
+</div>
+<button class="active:scale-95 transition-transform hover:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl">notifications</span>
+</button>
+</header>
+<main class="max-w-md mx-auto">
+<!-- Search Section -->
+<section class="px-container-padding-mobile mt-6">
+<div class="bg-surface-container-lowest rounded-2xl p-4 soft-glow border border-outline-variant/30">
+<div class="space-y-3">
+<div class="flex items-center gap-3 bg-surface p-3 rounded-xl border border-outline-variant/20 focus-within:border-primary-container transition-all">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 w-full font-label-md placeholder:text-outline" placeholder="Départ" type="text"/>
+</div>
+<div class="flex items-center gap-3 bg-surface p-3 rounded-xl border border-outline-variant/20 focus-within:border-primary-container transition-all">
+<span class="material-symbols-outlined text-secondary">explore</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 w-full font-label-md placeholder:text-outline" placeholder="Destination" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Filter Chips -->
+<section class="mt-6">
+<div class="flex gap-3 px-container-padding-mobile overflow-x-auto hide-scrollbar">
+<button class="flex items-center gap-1.5 bg-primary-container text-on-primary px-4 py-2 rounded-full font-label-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">map</span> Destination
+                </button>
+<button class="flex items-center gap-1.5 bg-surface-container-lowest text-on-surface-variant border border-outline-variant/30 px-4 py-2 rounded-full font-label-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Date
+                </button>
+<button class="flex items-center gap-1.5 bg-surface-container-lowest text-on-surface-variant border border-outline-variant/30 px-4 py-2 rounded-full font-label-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">weight</span> Poids
+                </button>
+<button class="flex items-center gap-1.5 bg-surface-container-lowest text-on-surface-variant border border-outline-variant/30 px-4 py-2 rounded-full font-label-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">payments</span> Prix
+                </button>
+</div>
+</section>
+<!-- Feed Content -->
+<section class="mt-8 px-container-padding-mobile space-y-4">
+<h2 class="font-headline-md text-lg text-on-surface px-1">Voyageurs disponibles</h2>
+<!-- Traveler Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 soft-glow border border-outline-variant/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="Professional studio portrait of a friendly young traveler with a warm smile, styled for a premium social app. Bright natural lighting, soft background, modern clean aesthetic using teal and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb3L6jpBSHw2kw7f8IVP5FcR-O7XNOcCcfip3MLkIxlfZZ1GWKyGyej9L0033jUm_XBOXZO9etIt5qezZVRrrho0Mm9gmi6mSJqcedBCdjlgFBxyNL_R6F7eq8hs4gZdhD_gB69zix-dKQOiFJXMA7PxnVXlbjuzxmn1ty9IyTMbSdz6u9JJPjDcb3rswzh9Wi4jUmM5rO7X3R6BGwNhS3cUe1B2tVbZvOTtptKZMpT7UoVB5pMQunRn8YvcRrc_xtoIphg-J4ILo"/>
+</div>
+<div>
+<p class="font-headline-md text-base leading-tight">Amadou Diallo</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm">4.8</span>
+</div>
+</div>
+</div>
+<div class="bg-secondary-container/20 text-secondary px-3 py-1 rounded-full font-label-sm">
+                        12€/kg
+                    </div>
+</div>
+<div class="flex items-center justify-between gap-4 mb-4">
+<div class="text-left">
+<p class="text-outline text-[10px] uppercase font-bold tracking-wider">Paris</p>
+<p class="font-headline-md text-sm">CDG</p>
+</div>
+<div class="flex-1 flex items-center justify-center relative px-2">
+<div class="flight-path"></div>
+<span class="material-symbols-outlined absolute text-primary bg-surface-container-lowest px-1 text-lg">flight_takeoff</span>
+</div>
+<div class="text-right">
+<p class="text-outline text-[10px] uppercase font-bold tracking-wider">Dakar</p>
+<p class="font-headline-md text-sm">DSS</p>
+</div>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-base">calendar_month</span>
+<span>14 Oct. 2023</span>
+</div>
+<div class="flex items-center gap-2 text-primary font-label-md">
+<span class="material-symbols-outlined text-base">work</span>
+<span>5kg dispos</span>
+</div>
+</div>
+</div>
+<h2 class="font-headline-md text-lg text-on-surface px-1 pt-4">Demandes d'envoi</h2>
+<!-- Request Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 soft-glow border border-outline-variant/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="High-quality flat lay photo of a sealed formal envelope and a small cardboard package on a minimalist white table. Professional, clean business lighting with soft teal shadows to match the brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAilCB0XX_0gJAh8UB4vwcYicrAZCHSUNwxrDKsfdi9HckDuD459FgHQ-TBSk0gtNjLLGd3org2QpZgKZluZRderHbp51Xb3MVltpHZc3CQeQWAvZwaSiYiJJXDPDLMn9U7_yfv9pSYYSZp0bbvRLpEMvLSVeSj3Uy9YVCuc5_cDURFMVd6jKz2wLZTijcvjxI3LHPspKY-_AQ_oGB6xiTwMLwIYAljq4v1MbDiFpXmcElz2CqFyVykZAyy6Eef8r44SipxlkGAdh4"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-base text-on-surface">Documents urgents</h3>
+<span class="text-primary font-bold text-lg">45€</span>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>Londres → Lagos</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-sm">weight</span>
+<span>Moins de 500g</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Urgent</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Papiers</span>
+</div>
+</div>
+<!-- Traveler Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 soft-glow border border-outline-variant/10 active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="Natural lifestyle portrait of a smiling woman traveler in a bright airport terminal setting. High-end digital photography, soft focus background, emphasizing trust and reliability. Teal and amber color accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBEjdFSRvjLSdr016EiYHbdspncVah8hW_qmDw8SrN4wr7U1woF010B6sEYfe27sFA__7hDDFp6GcXKkE7vsLEHPna7n-X9pscwkufKx93IWgDQJ583mRZWWKIPI38IuK0jZZBhIAM3cKWypTjJLSOPVMhUpqbQptQgDKi_3ywCyfo35cuIwAx442Ls2vlmdoBacmUdfybaV-Vd3X5rbARRCTAXV20dn1j7jj2WInEW6-sXysD-RJ9Cgjayt1NxY-HQlX6K8BdElM"/>
+</div>
+<div>
+<p class="font-headline-md text-base leading-tight">Sophie Laurent</p>
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm">4.9</span>
+</div>
+</div>
+</div>
+<div class="bg-secondary-container/20 text-secondary px-3 py-1 rounded-full font-label-sm">
+                        15€/kg
+                    </div>
+</div>
+<div class="flex items-center justify-between gap-4 mb-4">
+<div class="text-left">
+<p class="text-outline text-[10px] uppercase font-bold tracking-wider">Lyon</p>
+<p class="font-headline-md text-sm">LYS</p>
+</div>
+<div class="flex-1 flex items-center justify-center relative px-2">
+<div class="flight-path"></div>
+<span class="material-symbols-outlined absolute text-primary bg-surface-container-lowest px-1 text-lg">train</span>
+</div>
+<div class="text-right">
+<p class="text-outline text-[10px] uppercase font-bold tracking-wider">Bruxelles</p>
+<p class="font-headline-md text-sm">ZYR</p>
+</div>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-base">calendar_month</span>
+<span>18 Oct. 2023</span>
+</div>
+<div class="flex items-center gap-2 text-primary font-label-md">
+<span class="material-symbols-outlined text-base">work</span>
+<span>12kg dispos</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-[0px_-4px_20px_rgba(0,109,119,0.05)] rounded-t-2xl">
+<button class="flex flex-col items-center justify-center bg-primary-container/10 text-primary rounded-xl px-3 py-1 transition-transform active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Accueil</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Recherche</span>
+</button>
+<!-- FAB -->
+<div class="relative -top-6">
+<button class="w-14 h-14 bg-primary-container text-on-primary rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions and subtle scroll reveal
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.soft-glow');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body></html>

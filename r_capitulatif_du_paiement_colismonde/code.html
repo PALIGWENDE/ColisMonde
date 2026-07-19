@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>ColisMonde - Résumé du Paiement</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#004f56",
+                    "on-primary": "#ffffff",
+                    "primary": "#00535b",
+                    "outline-variant": "#bec8ca",
+                    "on-secondary-container": "#663b00",
+                    "on-primary-fixed": "#001f23",
+                    "surface-container-low": "#f3f4f5",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-fixed-dim": "#90d3cb",
+                    "on-surface": "#191c1d",
+                    "inverse-primary": "#82d3de",
+                    "secondary": "#895100",
+                    "surface-container-highest": "#e1e3e4",
+                    "outline": "#6f797a",
+                    "on-surface-variant": "#3e494a",
+                    "on-secondary-fixed-variant": "#683d00",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#82d3de",
+                    "surface-bright": "#f8f9fa",
+                    "primary-fixed": "#9ff0fb",
+                    "on-primary-container": "#9becf7",
+                    "on-tertiary-fixed": "#00201e",
+                    "background": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#006d77",
+                    "on-secondary-fixed": "#2c1700",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#edeeef",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#fd9d1a",
+                    "on-background": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#00504b",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-fixed": "#acefe7",
+                    "tertiary-container": "#286d67",
+                    "tertiary": "#01544f",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb86b",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-high": "#e7e8e9",
+                    "secondary-fixed": "#ffdcbc",
+                    "surface-tint": "#006972",
+                    "on-tertiary-container": "#a9ece4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "stack-md": "16px",
+                    "container-padding-desktop": "40px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-glow-card {
+            box-shadow: 0px 4px 20px rgba(0, 109, 119, 0.05);
+        }
+        .premium-highlight {
+            border: 2px solid #006d77;
+            position: relative;
+        }
+        .flight-path {
+            background-image: radial-gradient(#bec8ca 1px, transparent 1px);
+            background-size: 8px 8px;
+            height: 2px;
+            width: 100%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background">
+<!-- TopAppBar -->
+<nav class="w-full top-0 sticky z-50 bg-surface shadow-[0px_4px_20px_rgba(0,109,119,0.05)] flex justify-between items-center px-container-padding-mobile py-4 w-full">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ColisMonde</h1>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">language</span>
+<span class="material-symbols-outlined text-primary">notifications</span>
+</div>
+</nav>
+<main class="px-container-padding-mobile pt-6 pb-32 space-y-stack-md">
+<!-- Journey Info -->
+<section class="bg-white rounded-[16px] p-4 soft-glow-card">
+<div class="flex justify-between items-center mb-4">
+<div class="text-center">
+<p class="font-label-sm text-on-surface-variant">DÉPART</p>
+<p class="font-headline-md text-primary">DXB</p>
+<p class="font-label-md text-on-surface">Dubai</p>
+</div>
+<div class="flex-1 px-4 flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary mb-1">flight_takeoff</span>
+<div class="flight-path"></div>
+</div>
+<div class="text-center">
+<p class="font-label-sm text-on-surface-variant">ARRIVÉE</p>
+<p class="font-headline-md text-primary">BOM</p>
+<p class="font-label-md text-on-surface">Mumbai</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-3 border-t border-surface-container">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 18px;">package_2</span>
+<p class="font-label-md text-on-surface-variant">Colis (Électronique) • 2.5kg</p>
+</div>
+</section>
+<!-- Cost Breakdown -->
+<section class="space-y-3">
+<h2 class="font-label-md text-on-surface-variant uppercase tracking-wider">Résumé des coûts</h2>
+<div class="bg-white rounded-[16px] p-5 soft-glow-card space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Frais d'expédition</span>
+<span class="font-label-md text-on-surface">170,00€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Frais de service</span>
+<span class="font-label-md text-on-surface">15,00€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Assurance</span>
+<span class="font-label-md text-on-surface" id="insurance-cost">15,00€</span>
+</div>
+<div class="pt-4 border-t border-dashed border-outline-variant flex justify-between items-center">
+<span class="font-headline-md text-on-surface">Total</span>
+<span class="font-headline-md text-primary">200,00€</span>
+</div>
+</div>
+</section>
+<!-- Insurance Options -->
+<section class="space-y-3">
+<h2 class="font-label-md text-on-surface-variant uppercase tracking-wider">Assurance Voyage</h2>
+<div class="grid grid-cols-1 gap-3">
+<!-- Basic Option -->
+<label class="relative flex items-center p-4 bg-white rounded-[16px] soft-glow-card border-2 border-transparent cursor-pointer transition-all active:scale-[0.98]">
+<input class="hidden peer" name="insurance" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center peer-checked:border-primary transition-colors">
+<div class="w-2.5 h-2.5 rounded-full bg-primary scale-0 peer-checked:scale-100 transition-transform"></div>
+</div>
+<div class="ml-4 flex-1">
+<p class="font-label-md text-on-surface">Basique</p>
+<p class="font-label-sm text-on-surface-variant">Gratuit</p>
+</div>
+</label>
+<!-- Premium Option -->
+<label class="relative flex items-center p-4 bg-white rounded-[16px] soft-glow-card premium-highlight cursor-pointer transition-all active:scale-[0.98]">
+<input checked="" class="hidden peer" name="insurance" type="radio"/>
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center transition-colors">
+<div class="w-2.5 h-2.5 rounded-full bg-primary scale-100 transition-transform"></div>
+</div>
+<div class="ml-4 flex-1">
+<div class="flex items-center gap-2">
+<p class="font-label-md text-on-surface">Premium</p>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full font-bold">RECOMMANDÉ</span>
+</div>
+<p class="font-label-sm text-on-surface-variant">15€ - Couvre jusqu'à 500€</p>
+</div>
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</label>
+</div>
+</section>
+<!-- Payment Method -->
+<section class="space-y-3">
+<h2 class="font-label-md text-on-surface-variant uppercase tracking-wider">Mode de paiement</h2>
+<div class="space-y-3">
+<!-- Saved Card -->
+<div class="flex items-center justify-between p-4 bg-white rounded-[16px] soft-glow-card">
+<div class="flex items-center gap-4">
+<div class="w-12 h-8 bg-surface-container rounded flex items-center justify-center overflow-hidden">
+<img class="w-8" data-alt="A stylized illustration of a credit card icon with the Visa logo on a clean, professional background with a corporate blue and white theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4SX8xyOQREbKMPz90uBCbu5iId3MNiXvcG2RuF-SOyxJR1YbWkXoYijuR6Efznb9ONTYzFc89g6ERXY24QLchWMhBxjW0nr7wnpNbUcCi5tPMPAmRz47-VeQr2D2V9F_CBDtjPM7daPBQ9sDWRj-o0q6XJmXS5MJfHBc3DRJxKMr1BkmeLnzneuTZdQd9gRjAXIRl-4eJJtT1we-2kUSt-CCwPQa14Q52k-rItra0Nvh5gvLHOFbNXn5Vn5USNK3XTrzJVz66nPU"/>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Visa ending in 4242</p>
+<p class="font-label-sm text-on-surface-variant">Expires 12/26</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<!-- Add New -->
+<button class="w-full flex items-center justify-center gap-2 p-4 border-2 border-dashed border-outline-variant rounded-[16px] text-primary font-label-md active:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined">add</span>
+                    Ajouter un nouveau mode
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-white p-container-padding-mobile pb-safe shadow-[0px_-4px_20px_rgba(0,109,119,0.05)] z-50">
+<button class="w-full bg-primary-container text-on-primary py-4 rounded-[16px] font-headline-md active:scale-95 transition-transform flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
+            Payer 200€
+        </button>
+<p class="text-center font-label-sm text-on-surface-variant mt-3 px-4">
+            Paiement sécurisé crypté SSL. En payant, vous acceptez nos conditions générales de transport.
+        </p>
+</div>
+<script>
+        // Simple micro-interaction for insurance selection
+        const radioButtons = document.querySelectorAll('input[name="insurance"]');
+        const insuranceLabels = document.querySelectorAll('label');
+
+        radioButtons.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                insuranceLabels.forEach(label => label.classList.remove('premium-highlight'));
+                if (radio.checked) {
+                    radio.parentElement.classList.add('premium-highlight');
+                }
+            });
+        });
+    </script>
+</body></html>

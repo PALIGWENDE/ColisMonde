@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suivi de Livraison - ColisMonde</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .pulse-animation {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 109, 119, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 109, 119, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 109, 119, 0); }
+        }
+        .flight-path {
+            background-image: radial-gradient(#bec8ca 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f8f9fa",
+                        "tertiary-container": "#286d67",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed-dim": "#ffb86b",
+                        "on-primary-fixed": "#001f23",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1d",
+                        "on-secondary-container": "#663b00",
+                        "primary": "#00535b",
+                        "on-secondary-fixed": "#2c1700",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#01544f",
+                        "surface-dim": "#d9dadb",
+                        "outline-variant": "#bec8ca",
+                        "on-tertiary-fixed": "#00201e",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-fixed": "#acefe7",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed-variant": "#683d00",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "on-tertiary-container": "#a9ece4",
+                        "on-primary-container": "#9becf7",
+                        "on-tertiary-fixed-variant": "#00504b",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#82d3de",
+                        "surface-tint": "#006972",
+                        "inverse-primary": "#82d3de",
+                        "primary-container": "#006d77",
+                        "tertiary-fixed-dim": "#90d3cb",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-surface-variant": "#3e494a",
+                        "secondary-fixed": "#ffdcbc",
+                        "outline": "#6f797a",
+                        "on-primary-fixed-variant": "#004f56",
+                        "primary-fixed": "#9ff0fb",
+                        "secondary-container": "#fd9d1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#895100",
+                        "surface-container-highest": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "16px",
+                        "stack-lg": "32px",
+                        "stack-sm": "8px",
+                        "unit": "8px",
+                        "container-padding-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky z-50 bg-surface shadow-[0px_4px_20px_rgba(0,109,119,0.05)] flex justify-between items-center px-container-padding-mobile py-4">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary text-2xl">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Suivi de colis</h1>
+</div>
+<button class="active:scale-95 transition-transform hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary text-2xl">notifications</span>
+</button>
+</header>
+<main class="px-container-padding-mobile mt-6 space-y-gutter">
+<!-- Delivery Summary Card -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-[0px_4px_20px_rgba(0,109,119,0.05)] border border-outline-variant/30">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">ID Expédition</span>
+<p class="font-headline-md text-headline-md text-primary">CM-8829-XQ</p>
+</div>
+<div class="bg-secondary-container/20 px-3 py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-secondary font-bold">En transit</span>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-4">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">De</span>
+<span class="font-label-md text-label-md">Paris, FR</span>
+</div>
+<div class="flex-1 px-4 relative flex items-center justify-center">
+<div class="w-full border-t border-dashed border-outline-variant absolute top-1/2"></div>
+<span class="material-symbols-outlined text-primary-container relative z-10 bg-surface-container-lowest px-2" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-outline">À</span>
+<span class="font-label-md text-label-md">Montréal, CA</span>
+</div>
+</div>
+</section>
+<!-- Confirmation Code Section -->
+<section class="bg-primary-container text-on-primary rounded-xl p-6 shadow-lg overflow-hidden relative">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl">verified_user</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-label-md text-label-md text-on-primary-container mb-2">Code de confirmation</h3>
+<div class="flex gap-2 justify-between mt-4">
+<div class="bg-on-primary/10 border border-on-primary/20 rounded-lg w-12 h-14 flex items-center justify-center font-headline-md text-headline-md">4</div>
+<div class="bg-on-primary/10 border border-on-primary/20 rounded-lg w-12 h-14 flex items-center justify-center font-headline-md text-headline-md">8</div>
+<div class="bg-on-primary/10 border border-on-primary/20 rounded-lg w-12 h-14 flex items-center justify-center font-headline-md text-headline-md">2</div>
+<div class="bg-on-primary/10 border border-on-primary/20 rounded-lg w-12 h-14 flex items-center justify-center font-headline-md text-headline-md">9</div>
+<div class="bg-on-primary/10 border border-on-primary/20 rounded-lg w-12 h-14 flex items-center justify-center font-headline-md text-headline-md">3</div>
+<div class="bg-on-primary/10 border border-on-primary/20 rounded-lg w-12 h-14 flex items-center justify-center font-headline-md text-headline-md">0</div>
+</div>
+<p class="font-label-sm text-label-sm mt-4 opacity-80 italic">Présentez ce code au voyageur lors de la réception.</p>
+</div>
+</section>
+<!-- Vertical Timeline -->
+<section class="py-4">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Suivi détaillé</h2>
+<div class="relative pl-8 space-y-10">
+<!-- Line -->
+<div class="absolute left-[15px] top-4 bottom-4 w-[2px] bg-outline-variant"></div>
+<!-- Step 1: Accepté -->
+<div class="relative">
+<div class="absolute -left-10 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white text-lg">check</span>
+</div>
+<div>
+<div class="flex justify-between items-baseline">
+<h4 class="font-label-md text-label-md text-on-surface">Accepté</h4>
+<span class="font-label-sm text-label-sm text-outline">12 Oct, 10:30</span>
+</div>
+<p class="font-body-md text-on-surface-variant">L'offre a été validée par le voyageur.</p>
+<p class="font-label-sm text-label-sm text-outline mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span> Paris - Centre de collecte
+                        </p>
+</div>
+</div>
+<!-- Step 2: Colis remis -->
+<div class="relative">
+<div class="absolute -left-10 w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white text-lg">check</span>
+</div>
+<div>
+<div class="flex justify-between items-baseline">
+<h4 class="font-label-md text-label-md text-on-surface">Colis remis</h4>
+<span class="font-label-sm text-label-sm text-outline">13 Oct, 14:15</span>
+</div>
+<p class="font-body-md text-on-surface-variant">Le colis a été confié au voyageur.</p>
+<p class="font-label-sm text-label-sm text-outline mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span> Aéroport Paris CDG
+                        </p>
+</div>
+</div>
+<!-- Step 3: En transit (Active) -->
+<div class="relative">
+<div class="absolute -left-10 w-8 h-8 bg-primary-container rounded-full flex items-center justify-center z-10 pulse-animation">
+<span class="material-symbols-outlined text-white text-lg animate-spin-slow" style="font-variation-settings: 'FILL' 1;">package_2</span>
+</div>
+<div>
+<div class="flex justify-between items-baseline">
+<h4 class="font-label-md text-label-md text-primary font-bold">En transit</h4>
+<span class="font-label-sm text-label-sm text-primary font-medium">Actuel</span>
+</div>
+<p class="font-body-md text-on-surface-variant">Le colis traverse l'Atlantique vers Montréal.</p>
+<p class="font-label-sm text-label-sm text-primary-container mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">flight</span> Vol AC871 en cours
+                        </p>
+</div>
+</div>
+<!-- Step 4: Livré (Pending) -->
+<div class="relative">
+<div class="absolute -left-10 w-8 h-8 bg-surface-container-high rounded-full border-2 border-outline-variant flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-outline-variant text-lg">inventory_2</span>
+</div>
+<div class="opacity-50">
+<div class="flex justify-between items-baseline">
+<h4 class="font-label-md text-label-md text-on-surface">Livré</h4>
+<span class="font-label-sm text-label-sm text-outline">Prévu 14 Oct</span>
+</div>
+<p class="font-body-md text-on-surface-variant">Remise finale au destinataire.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Proof of Delivery Placeholder -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Preuve de livraison</h2>
+<div class="bg-surface-container-low rounded-xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center py-10 px-6 text-center group cursor-pointer hover:bg-surface-container transition-colors">
+<div class="w-full max-w-[280px] h-48 rounded-lg overflow-hidden mb-4 relative shadow-sm">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A professional close-up photograph of a medium-sized cardboard delivery box resting on a modern, clean light gray doorstep. The lighting is bright and natural morning light, creating soft shadows. In the background, a blurred modern residential entrance with a touch of greenery is visible. The aesthetic is clean, minimalist, and high-quality, focusing on the safe arrival of a shipment in a premium urban setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQnHyKEpSDG1jUr_gHnlakoFiDWl1--yf_EBfncnJw9R7C6S6fqgyvT_C5m5sz9sOVlET3xKsMl5AulAd216nUgNZGwtQFElslvErTiOZmfNqPx6qcchAwIUlZsx_Lsx0XXYDTXkLKncbrJqidNVIKqjDBNR946m7hsg9PKbrvQ1EHLCxfgI636tkng1ln1kF2kfDDIMbU34UPX33xvoyOanP2htYTNFT9MLFX3l5cFUgGzPZD90spjTEbRwsz001hFW39f5qfVJ8"/>
+<div class="absolute inset-0 bg-on-surface/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl">photo_camera</span>
+</div>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">La photo apparaîtra ici une fois livrée</p>
+<p class="font-label-sm text-label-sm text-outline">Capture requise par le voyageur au moment de la remise</p>
+</div>
+</section>
+<!-- Traveler Action Card -->
+<section class="bg-surface-container-highest rounded-xl p-4 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A portrait of a friendly-looking male traveler in his 30s, smiling warmly at the camera. He is wearing a casual but neat teal polo shirt. The background is a slightly blurred busy airport terminal with soft, warm overhead lighting. The photo has a premium, authentic lifestyle feel that inspires trust and community connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATJ6eRqoeXpqPTy6T94yq8-oUakiEm4dwm-WmPwCpaDD1922bn8wCbqZr3vtSTld_jWGXaAe73-Z6JnA8GEYqK22j1L88an4PyYclCi26fln37FfBwc4IdkHFgOefyBzCyRLwY8esYo4kDca1fi1KtyiTgaUUoUYwzdQ7sfYz6uGisMOxYsse130x4Oc6GSSj0X6sZoC1Gv6_upzu8bbdz7ioRlk3jJ6EBeMQuNFlxMXvFIyE65Gn-jWWpyWrHIjs01ZPC4-dDWWw"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md">Thomas M.</h4>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">4.9 (127 envois)</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+                Contacter
+            </button>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Inactive for focus) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-[0px_-4px_20px_rgba(0,109,119,0.05)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Rechercher</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/10 text-primary rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">package_2</span>
+<span class="font-label-sm text-label-sm">Envois</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profil</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for code copy or visual feedback
+        document.querySelector('.bg-primary-container').addEventListener('click', function() {
+            const code = "482930";
+            navigator.clipboard.writeText(code).then(() => {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 bg-on-surface text-surface px-4 py-2 rounded-full text-label-sm font-label-sm z-[100] animate-bounce';
+                toast.innerText = 'Code copié dans le presse-papier';
+                document.body.appendChild(toast);
+                setTimeout(() => toast.remove(), 2000);
+            });
+        });
+    </script>
+</body></html>
