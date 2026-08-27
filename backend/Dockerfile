@@ -6,6 +6,7 @@
 
 FROM node:20-alpine AS build
 WORKDIR /repo
+RUN apk add --no-cache openssl
 
 COPY package.json package-lock.json ./
 COPY shared/package.json shared/
@@ -22,6 +23,7 @@ RUN npm run build --workspace @colismonde/backend
 
 FROM node:20-alpine AS runtime
 WORKDIR /repo
+RUN apk add --no-cache openssl
 ENV NODE_ENV=production
 
 COPY --from=build /repo/node_modules node_modules
