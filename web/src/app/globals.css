@@ -5,6 +5,8 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    --font-inter: "Inter";
+    --font-jakarta: "Plus Jakarta Sans";
   }
 
   body {
