@@ -29,8 +29,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
+        aria-busy={loading || undefined}
         className={clsx(
-          "inline-flex items-center justify-center gap-2 font-semibold transition-all active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50",
+          "inline-flex items-center justify-center gap-2 font-semibold transition-[background-color,opacity,transform] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container focus-visible:ring-offset-2",
           VARIANT_CLASSES[variant],
           SIZE_CLASSES[size],
           fullWidth && "w-full",
@@ -39,7 +41,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || loading}
         {...props}
       >
-        {loading ? <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" /> : children}
+        {loading ? <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]" /> : children}
       </button>
     );
   },

@@ -4,8 +4,7 @@
   "workspaces": [
     "web",
     "backend",
-    "shared",
-    "mobile"
+    "shared"
   ],
   "scripts": {
     "dev:backend": "npm run dev --workspace backend",
@@ -16,6 +15,6 @@
     "db:migrate": "npm run db:migrate --workspace backend",
     "db:seed": "npm run db:seed --workspace backend",
     "db:import-cities": "npm run db:import-cities --workspace backend",
-    "mobile:sync": "npm run sync --workspace mobile"
+    "dev:mobile": "npm --prefix mobile start"
   }
 }

@@ -96,14 +96,14 @@ export default function LandingPage() {
               <div className="flex flex-col gap-4 pt-4 sm:flex-row">
                 <Link
                   href={isAuthenticated ? "/annonce/nouvelle" : "/inscription"}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-8 py-4 font-label-md text-label-md text-white transition-all hover:shadow-lg active:scale-95"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-8 py-4 font-label-md text-label-md text-white transition-[box-shadow,transform] hover:shadow-lg active:scale-95"
                 >
                   <Icon name="package_2" />
                   Envoyer un colis
                 </Link>
                 <Link
                   href={isAuthenticated ? "/annonce/nouvelle" : "/inscription"}
-                  className="flex items-center justify-center gap-2 rounded-xl border-2 border-primary-container px-8 py-4 font-label-md text-label-md text-primary-container transition-all hover:bg-primary-container/5 active:scale-95"
+                  className="flex items-center justify-center gap-2 rounded-xl border-2 border-primary-container px-8 py-4 font-label-md text-label-md text-primary-container transition-[background-color,transform] hover:bg-primary-container/5 active:scale-95"
                 >
                   <Icon name="travel_explore" />
                   Proposer un trajet

@@ -1,4 +1,3 @@
-import path from "node:path";
 import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
@@ -7,14 +6,9 @@ import { validate } from "@/middleware/validate";
 import { asyncHandler } from "@/utils/asyncHandler";
 import { ApiError } from "@/utils/apiError";
 import { serializeMe, serializePublicUser } from "@/utils/serializers";
-import {
-  persistUploadedFile,
-  uploadAvatar,
-  uploadDocument,
-  handleUploadErrors,
-  uploadRoot,
-} from "@/modules/uploads/upload.middleware";
-import { updateMeSchema, uploadDocumentSchema, userIdParamSchema } from "./users.schemas";
+import { persistUploadedFile, uploadAvatar, uploadDocument, handleUploadErrors } from "@/modules/uploads/upload.middleware";
+import { readFile } from "@/lib/storage";
+import { registerDeviceTokenSchema, updateMeSchema, uploadDocumentSchema, userIdParamSchema } from "./users.schemas";
 import { deleteUserAccount } from "./account-deletion.service";
 
 export const usersRouter = Router();
@@ -99,9 +93,15 @@ usersRouter.get(
     if (!doc) throw ApiError.notFound("Document introuvable");
     if (doc.userId !== req.userId) throw ApiError.forbidden();
 
-    const filePath = path.join(uploadRoot, doc.fileUrl.replace(/^\/uploads\//, ""));
-    if (!filePath.startsWith(uploadRoot)) throw ApiError.forbidden();
-    res.sendFile(filePath);
+    const contentType = doc.fileUrl.endsWith(".pdf") ? "application/pdf" : "image/webp";
+    res.setHeader("Content-Type", contentType);
+
+    const file = await readFile(doc.fileUrl);
+    if ("stream" in file) {
+      file.stream.pipe(res);
+    } else {
+      res.sendFile(file.filePath);
+    }
   }),
 );
 
@@ -114,6 +114,35 @@ usersRouter.get(
       orderBy: { createdAt: "desc" },
     });
     res.json({ documents });
+  }),
+);
+
+/**
+ * Enregistrement d'un jeton Expo Push pour les notifications hors-ligne (app mobile fermée).
+ * Upsert idempotent sur expoPushToken : réenregistrer le même appareil ne crée pas de doublon.
+ */
+usersRouter.post(
+  "/me/device-tokens",
+  requireAuth,
+  validate({ body: registerDeviceTokenSchema }),
+  asyncHandler(async (req, res) => {
+    const { expoPushToken, platform } = req.body;
+    const token = await prisma.deviceToken.upsert({
+      where: { expoPushToken },
+      create: { userId: req.userId!, expoPushToken, platform },
+      update: { userId: req.userId!, platform, lastSeenAt: new Date() },
+    });
+    res.status(201).json({ deviceToken: token });
+  }),
+);
+
+/** Désenregistrement à la déconnexion — évite qu'un appareil partagé/réutilisé reçoive les push du compte précédent. */
+usersRouter.delete(
+  "/me/device-tokens/:token",
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    await prisma.deviceToken.deleteMany({ where: { expoPushToken: req.params.token, userId: req.userId } });
+    res.status(204).send();
   }),
 );
 

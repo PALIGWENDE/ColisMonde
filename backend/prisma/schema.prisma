@@ -38,6 +38,7 @@ model User {
 
   refreshTokens         RefreshToken[]
   verificationDocuments VerificationDocument[]
+  deviceTokens          DeviceToken[]
 
   trips            Trip[]
   packageRequests  PackageRequest[]
@@ -82,6 +83,20 @@ model RefreshToken {
   revokedAt DateTime?
   replacedByTokenHash String?
   createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+// Jetons Expo Push enregistrés par l'app mobile pour les notifications hors-ligne (app fermée) —
+// le web n'utilise pas ce modèle (il reçoit ses notifications en direct via Socket.IO uniquement).
+model DeviceToken {
+  id            String   @id @default(uuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expoPushToken String   @unique
+  platform      String
+  createdAt     DateTime @default(now())
+  lastSeenAt    DateTime @updatedAt
 
   @@index([userId])
 }

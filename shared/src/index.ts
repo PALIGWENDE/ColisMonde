@@ -200,6 +200,8 @@ export interface ReviewDTO {
 export interface AuthTokensDTO {
   accessToken: string;
   accessTokenExpiresAt: string;
+  /** Renvoyé uniquement aux clients mobiles (header X-Client-Type: mobile) — le web reçoit son refresh token via cookie httpOnly. */
+  refreshToken?: string;
 }
 
 export interface ApiErrorBody {

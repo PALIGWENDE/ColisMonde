@@ -1,4 +1,18 @@
 import rateLimit from "express-rate-limit";
+import { RedisStore } from "rate-limit-redis";
+import { isRedisConfigured, redisClient } from "@/lib/redis";
+
+/**
+ * Sans Redis, express-rate-limit compte en mémoire locale — cohérent en mono-instance seulement.
+ * Avec plusieurs instances de serveur derrière un même load balancer, chaque instance aurait son
+ * propre compteur et la limite réelle serait multipliée par le nombre d'instances : le store Redis
+ * partagé applique la même limite quel que soit le nombre d'instances.
+ */
+function store() {
+  if (!isRedisConfigured || !redisClient) return undefined;
+  const client = redisClient;
+  return new RedisStore({ sendCommand: (...args: string[]) => client.sendCommand(args) });
+}
 
 /** Anti brute-force sur les tentatives de connexion : 10 essais / 15 min par IP. */
 export const loginRateLimiter = rateLimit({
@@ -6,6 +20,7 @@ export const loginRateLimiter = rateLimit({
   limit: 10,
   standardHeaders: true,
   legacyHeaders: false,
+  store: store(),
   message: { error: "TOO_MANY_REQUESTS", message: "Trop de tentatives de connexion, réessayez dans 15 minutes" },
 });
 
@@ -15,6 +30,7 @@ export const registerRateLimiter = rateLimit({
   limit: 5,
   standardHeaders: true,
   legacyHeaders: false,
+  store: store(),
   message: { error: "TOO_MANY_REQUESTS", message: "Trop de comptes créés depuis cette adresse, réessayez plus tard" },
 });
 
@@ -23,6 +39,7 @@ export const refreshRateLimiter = rateLimit({
   limit: 30,
   standardHeaders: true,
   legacyHeaders: false,
+  store: store(),
   message: { error: "TOO_MANY_REQUESTS", message: "Trop de requêtes, réessayez plus tard" },
 });
 
@@ -32,4 +49,5 @@ export const globalRateLimiter = rateLimit({
   limit: 120,
   standardHeaders: true,
   legacyHeaders: false,
+  store: store(),
 });

@@ -180,7 +180,7 @@ function InsuranceOption({
       type="button"
       onClick={onClick}
       className={clsx(
-        "relative flex items-center rounded-2xl bg-white p-4 text-left shadow-soft-glow transition-all",
+        "relative flex items-center rounded-2xl bg-white p-4 text-left shadow-soft-glow transition-colors",
         selected ? "border-2 border-primary" : "border-2 border-transparent",
       )}
     >

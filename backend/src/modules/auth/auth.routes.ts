@@ -31,6 +31,10 @@ function clearRefreshCookie(res: Response) {
   res.clearCookie(REFRESH_COOKIE_NAME, { path: REFRESH_COOKIE_PATH });
 }
 
+function isMobileClient(req: { headers: Record<string, unknown> }) {
+  return req.headers["x-client-type"] === "mobile";
+}
+
 async function issueSession(res: Response, userId: string, email: string, req: { headers: Record<string, unknown>; ip?: string }) {
   const accessToken = signAccessToken({ sub: userId, email });
   const { token: refreshToken, hash, expiresAt } = generateRefreshToken();
@@ -45,8 +49,15 @@ async function issueSession(res: Response, userId: string, email: string, req: {
     },
   });
 
+  // Le cookie httpOnly reste posé pour tout le monde (inoffensif pour un client mobile qui l'ignore) ;
+  // seuls les clients mobiles reçoivent aussi le refresh token en clair dans le corps JSON, car ils n'ont
+  // pas de vrai cookie jar navigateur pour renvoyer un cookie scoped à path=/api/auth de façon fiable.
   setRefreshCookie(res, refreshToken, expiresAt);
-  return { accessToken, accessTokenExpiresAt: accessTokenExpiryDate().toISOString() };
+  return {
+    accessToken,
+    accessTokenExpiresAt: accessTokenExpiryDate().toISOString(),
+    ...(isMobileClient(req) ? { refreshToken } : {}),
+  };
 }
 
 authRouter.post(
@@ -95,7 +106,7 @@ authRouter.post(
   "/refresh",
   refreshRateLimiter,
   asyncHandler(async (req, res) => {
-    const token = req.cookies?.[REFRESH_COOKIE_NAME];
+    const token = req.cookies?.[REFRESH_COOKIE_NAME] ?? (isMobileClient(req) ? req.body?.refreshToken : undefined);
     if (!token) throw ApiError.unauthorized("Aucune session active");
 
     const tokenHash = hashRefreshToken(token);
@@ -124,7 +135,7 @@ authRouter.post(
 authRouter.post(
   "/logout",
   asyncHandler(async (req, res) => {
-    const token = req.cookies?.[REFRESH_COOKIE_NAME];
+    const token = req.cookies?.[REFRESH_COOKIE_NAME] ?? (isMobileClient(req) ? req.body?.refreshToken : undefined);
     if (token) {
       const tokenHash = hashRefreshToken(token);
       await prisma.refreshToken.updateMany({ where: { tokenHash, revokedAt: null }, data: { revokedAt: new Date() } });

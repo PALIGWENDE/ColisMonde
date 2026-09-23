@@ -1,6 +1,7 @@
 import type { NotificationType } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { getIo } from "@/realtime/io";
+import { sendExpoPush } from "@/lib/expoPush";
 
 export async function createNotification(params: {
   userId: string;
@@ -27,6 +28,16 @@ export async function createNotification(params: {
     relatedBookingId: notification.relatedBookingId,
     createdAt: notification.createdAt.toISOString(),
   });
+
+  // Best-effort, ne bloque jamais la réponse : la notification en base + l'event socket ci-dessus
+  // sont déjà la source de vérité. Le push ne fait qu'atteindre les appareils mobiles hors ligne.
+  const devices = await prisma.deviceToken.findMany({ where: { userId: params.userId }, select: { expoPushToken: true } });
+  if (devices.length > 0) {
+    void sendExpoPush(
+      devices.map((d) => d.expoPushToken),
+      { title: params.title, body: params.body, data: { relatedBookingId: params.relatedBookingId, type: params.type } },
+    );
+  }
 
   return notification;
 }

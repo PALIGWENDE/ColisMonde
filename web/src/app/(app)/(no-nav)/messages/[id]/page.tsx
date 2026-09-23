@@ -38,7 +38,11 @@ export default function ConversationPage() {
       <header className="sticky top-0 z-50 border-b border-outline-variant/20 bg-surface px-container-padding-mobile py-4 shadow-soft-glow">
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <button onClick={() => router.push("/messages")} className="rounded-xl p-2 text-on-surface transition-all hover:bg-surface-container-high active:scale-95">
+            <button
+              onClick={() => router.push("/messages")}
+              aria-label="Retour aux messages"
+              className="rounded-xl p-2 text-on-surface transition-colors hover:bg-surface-container-high active:scale-95"
+            >
               <Icon name="arrow_back" />
             </button>
             <div className="flex items-center gap-3">
@@ -65,7 +69,11 @@ export default function ConversationPage() {
       </header>
 
       <main className="mx-auto w-full max-w-5xl flex-1 space-y-6 overflow-y-auto px-container-padding-mobile py-6">
-        {isLoading && <p className="text-center font-label-sm text-label-sm text-on-surface-variant">Chargement...</p>}
+        {isLoading && (
+          <p aria-live="polite" className="text-center font-label-sm text-label-sm text-on-surface-variant">
+            Chargement…
+          </p>
+        )}
 
         <div className="flex justify-center">
           <span className="rounded-full bg-surface-container-high px-3 py-1 font-label-sm text-label-sm font-medium text-on-surface-variant">
@@ -105,16 +113,23 @@ export default function ConversationPage() {
       <footer className="z-50 border-t border-outline-variant/30 bg-surface px-container-padding-mobile py-4 pb-safe">
         <form onSubmit={onSend} className="mx-auto flex max-w-5xl items-center gap-3">
           <div className="relative flex-1">
+            <label htmlFor="message-input" className="sr-only">
+              Message
+            </label>
             <input
+              id="message-input"
+              name="message"
+              autoComplete="off"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className="w-full rounded-full border-none bg-surface-container-low px-6 py-3 pr-12 text-body-md shadow-inner placeholder:text-outline/70 focus:outline-none focus:ring-2 focus:ring-primary-container"
-              placeholder="Écrivez un message..."
+              placeholder="Écrivez un message…"
             />
           </div>
           <button
             type="submit"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-gradient text-white shadow-md transition-all active:scale-90"
+            aria-label="Envoyer le message"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-gradient text-white shadow-md transition-transform active:scale-90"
           >
             <Icon name="send" size={24} />
           </button>

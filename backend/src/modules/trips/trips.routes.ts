@@ -13,6 +13,13 @@ export const tripsRouter = Router();
 
 const include = { traveler: true, departureCity: true, arrivalCity: true } as const;
 
+const ORDER_BY: Record<z.infer<typeof searchTripsSchema>["sort"], Record<string, unknown>> = {
+  date: { departureDate: "asc" },
+  price_asc: { pricePerKg: "asc" },
+  price_desc: { pricePerKg: "desc" },
+  rating: { traveler: { ratingAvg: "desc" } },
+};
+
 tripsRouter.get(
   "/",
   optionalAuth,
@@ -45,7 +52,7 @@ tripsRouter.get(
       prisma.trip.findMany({
         where,
         include,
-        orderBy: { departureDate: "asc" },
+        orderBy: ORDER_BY[q.sort],
         skip: (q.page - 1) * q.pageSize,
         take: q.pageSize,
       }),

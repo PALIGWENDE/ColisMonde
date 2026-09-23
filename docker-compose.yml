@@ -17,5 +17,20 @@ services:
       timeout: 5s
       retries: 10
 
+  # Optionnel — seulement utile pour tester REDIS_URL en local (adaptateur Socket.IO multi-instances
+  # + rate-limit partagé, voir DEPLOIEMENT.md "Passer à l'échelle"). Le backend tourne normalement
+  # sans ce service : ne pas définir REDIS_URL dans backend/.env pour l'ignorer.
+  redis:
+    image: redis:7-alpine
+    container_name: colismonde-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
 volumes:
   colismonde-postgres-data:

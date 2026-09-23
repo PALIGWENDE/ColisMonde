@@ -41,7 +41,11 @@ export default function ParametresPage() {
           <h2 className="px-1 font-label-md text-label-sm uppercase tracking-widest text-outline">
             Utilisateurs bloqués
           </h2>
-          {blockedLoading && <p className="font-body-md text-body-md text-on-surface-variant">Chargement...</p>}
+          {blockedLoading && (
+            <p aria-live="polite" className="font-body-md text-body-md text-on-surface-variant">
+              Chargement…
+            </p>
+          )}
           {!blockedLoading && blockedUsers.length === 0 && (
             <p className="font-body-md text-body-md text-on-surface-variant">
               Vous n&apos;avez bloqué personne. Un utilisateur bloqué ne peut plus vous contacter ni voir vos

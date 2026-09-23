@@ -1,0 +1,66 @@
+{
+  "expo": {
+    "name": "ColisMonde",
+    "slug": "colismonde",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "colismonde",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "app.colismonde.mobile",
+      "infoPlist": {
+        "NSCameraUsageDescription": "ColisMonde utilise l'appareil photo pour prendre en photo vos documents d'identité (vérification de profil) et la preuve de remise d'un colis.",
+        "NSPhotoLibraryUsageDescription": "ColisMonde accède à votre photothèque pour importer une photo de document d'identité, votre photo de profil, ou une preuve de livraison."
+      }
+    },
+    "android": {
+      "package": "app.colismonde.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#046A38",
+        "foregroundImage": "./assets/images/android-icon-foreground.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#046A38",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 76
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "ColisMonde accède à votre photothèque pour importer une photo de document d'identité, votre photo de profil, ou une preuve de livraison.",
+          "cameraPermission": "ColisMonde utilise l'appareil photo pour prendre en photo vos documents d'identité (vérification de profil) et la preuve de remise d'un colis."
+        }
+      ],
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/icon.png",
+          "color": "#046A38"
+        }
+      ],
+      "@react-native-community/datetimepicker"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "apiUrl": "http://192.168.11.106:4000",
+      "socketUrl": "http://192.168.11.106:4000"
+    }
+  }
+}

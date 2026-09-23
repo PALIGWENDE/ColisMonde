@@ -35,6 +35,24 @@ services:
         value: "5"
       - key: BCRYPT_SALT_ROUNDS
         value: "12"
+      # Stockage objet (S3-compatible, ex. Cloudflare R2) et Redis (Socket.IO multi-instances +
+      # limitation de débit partagée) — optionnels, laissés vides par défaut (voir DEPLOIEMENT.md
+      # "Passer à l'échelle" pour l'activation). Sans eux, l'app tourne normalement en mono-instance
+      # avec un disque local éphémère.
+      - key: S3_ENDPOINT
+        sync: false
+      - key: S3_REGION
+        sync: false
+      - key: S3_BUCKET
+        sync: false
+      - key: S3_ACCESS_KEY_ID
+        sync: false
+      - key: S3_SECRET_ACCESS_KEY
+        sync: false
+      - key: S3_PUBLIC_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
 
 databases:
   - name: colismonde-db

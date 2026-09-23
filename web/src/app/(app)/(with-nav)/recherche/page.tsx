@@ -77,7 +77,7 @@ function RecherchePageContent() {
 
         <div className="mb-6 flex items-center justify-between">
           <h2 className="font-headline-md text-headline-md text-on-background">
-            {isLoading ? "Recherche..." : `${trips.length} trajet${trips.length > 1 ? "s" : ""} trouvé${trips.length > 1 ? "s" : ""}`}
+            {isLoading ? "Recherche…" : `${trips.length} trajet${trips.length > 1 ? "s" : ""} trouvé${trips.length > 1 ? "s" : ""}`}
           </h2>
         </div>
 

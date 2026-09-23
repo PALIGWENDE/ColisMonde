@@ -11,6 +11,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   ({ label, icon, error, className, id, ...props }, ref) => {
     const fieldId = id ?? props.name;
+    const errorId = error && fieldId ? `${fieldId}-error` : undefined;
     return (
       <div className="space-y-1.5">
         {label && (
@@ -20,7 +21,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         )}
         <div
           className={clsx(
-            "flex items-center gap-3 rounded-xl border bg-surface p-3 transition-colors focus-within:border-primary-container",
+            "flex items-center gap-3 rounded-xl border bg-surface p-3 transition-colors focus-within:border-primary-container focus-within:ring-2 focus-within:ring-primary-container/25",
             error ? "border-error" : "border-outline-variant/40",
           )}
         >
@@ -28,11 +29,17 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <input
             ref={ref}
             id={fieldId}
+            aria-invalid={Boolean(error) || undefined}
+            aria-describedby={errorId}
             className={clsx("w-full border-none bg-transparent font-body-md text-body-md placeholder:text-outline focus:outline-none focus:ring-0", className)}
             {...props}
           />
         </div>
-        {error && <p className="font-label-sm text-label-sm text-error">{error}</p>}
+        {error && (
+          <p id={errorId} aria-live="polite" className="font-label-sm text-label-sm text-error">
+            {error}
+          </p>
+        )}
       </div>
     );
   },

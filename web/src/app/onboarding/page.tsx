@@ -63,7 +63,7 @@ export default function OnboardingPage() {
             <span
               key={i}
               className={clsx(
-                "h-2 rounded-full transition-all",
+                "h-2 rounded-full transition-[width,background-color] motion-reduce:transition-none",
                 i === step ? "w-8 bg-primary-container" : "w-2 bg-outline-variant",
               )}
             />

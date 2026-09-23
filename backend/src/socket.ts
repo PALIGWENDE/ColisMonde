@@ -1,14 +1,27 @@
 import type { Server as HttpServer } from "node:http";
 import { Server } from "socket.io";
+import { createAdapter } from "@socket.io/redis-adapter";
 import { prisma } from "@/lib/prisma";
 import { verifyAccessToken } from "@/utils/jwt";
 import { webOrigins } from "@/config/env";
 import { setIo } from "@/realtime/io";
+import { isRedisConfigured, redisClient } from "@/lib/redis";
 
-export function createSocketServer(httpServer: HttpServer) {
+export async function createSocketServer(httpServer: HttpServer) {
   const io = new Server(httpServer, {
     cors: { origin: webOrigins, credentials: true },
   });
+
+  // Sans adaptateur partagé, un message émis par cette instance n'atteindrait pas un socket connecté
+  // à une AUTRE instance derrière le même load balancer — nécessaire dès qu'on tourne à plus d'une
+  // instance de serveur (voir REDIS_URL). En mono-instance (dev, ou prod à faible trafic), l'adaptateur
+  // en mémoire par défaut de Socket.IO suffit et REDIS_URL peut rester absent.
+  if (isRedisConfigured && redisClient) {
+    const pubClient = redisClient.duplicate();
+    const subClient = redisClient.duplicate();
+    await Promise.all([pubClient.connect(), subClient.connect()]);
+    io.adapter(createAdapter(pubClient, subClient));
+  }
 
   // Authentification par access token JWT (même jeton que l'API REST), pas de session anonyme.
   io.use(async (socket, next) => {

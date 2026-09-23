@@ -71,3 +71,39 @@ navigateur ne soit plus bloqué par CORS.
 
 `render.yaml` génère des secrets JWT aléatoires (`generateValue: true`) — ne jamais réutiliser
 les valeurs de `backend/.env.example` en production.
+
+## Passer à l'échelle (au-delà de quelques centaines d'utilisateurs actifs)
+
+L'app fonctionne telle quelle en mono-instance (dev, démo, faible trafic). Deux limites connues
+avant de grossir, toutes deux activables sans changement de code, juste via des variables
+d'environnement — voir `backend/src/config/env.ts` :
+
+### 1. Stockage des fichiers (avatars, preuves de livraison, documents KYC) — à faire en premier
+
+Sur la plupart des hébergeurs gérés (dont Render), le disque du service est **éphémère** : tout
+fichier uploadé est perdu au prochain redéploiement, quel que soit le nombre d'utilisateurs. Pour
+un stockage durable, brancher un bucket S3-compatible (Cloudflare R2 recommandé : pas de frais de
+sortie, offre gratuite généreuse) :
+
+1. Créer un bucket R2 (dashboard Cloudflare → R2 → Create bucket), activer l'accès public dessus
+   (ou brancher un domaine personnalisé) pour obtenir une URL publique de base.
+2. Créer un jeton d'API R2 (Manage R2 API Tokens) → récupérer Access Key ID / Secret Access Key /
+   Endpoint (`https://<account_id>.r2.cloudflarestorage.com`).
+3. Renseigner sur Render (ou en local dans `.env`) : `S3_ENDPOINT`, `S3_BUCKET`,
+   `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_PUBLIC_URL` (`S3_REGION` reste `auto` pour R2).
+4. Redéployer — dès que ces 5 variables sont toutes renseignées, `backend/src/lib/storage.ts`
+   bascule automatiquement du disque local vers S3, sans autre changement.
+
+### 2. Redis — nécessaire seulement si on passe à plusieurs instances de serveur
+
+Tant qu'une seule instance backend tourne, ce n'est pas nécessaire. Dès qu'on en ajoute une
+deuxième (pour absorber plus de trafic), deux choses cassent sans Redis : la messagerie temps réel
+(un message envoyé sur l'instance A n'atteint pas un utilisateur connecté à l'instance B) et la
+limitation de débit (chaque instance compte séparément, la limite réelle se multiplie par le
+nombre d'instances). Render propose un addon Redis managé (ou Upstash en gratuit) : renseigner
+`REDIS_URL` active l'adaptateur Socket.IO partagé et le store de rate-limit partagé automatiquement.
+
+### 3. Plan d'hébergement
+
+Le plan gratuit/starter Render suffit pour du développement et une démo, pas pour un usage réel à
+grande échelle : prévoir un plan avec plus de RAM/CPU dédiés en fonction du trafic observé.

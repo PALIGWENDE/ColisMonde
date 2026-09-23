@@ -104,13 +104,10 @@ export default function ProfilePage() {
           </div>
         </section>
 
-        <Link
-          href="#documents"
-          onClick={(e: React.MouseEvent) => {
-            e.preventDefault();
-            documentInputRef.current?.click();
-          }}
-          className="mb-8 flex items-center justify-between rounded-xl border border-primary-container/20 bg-primary-container/10 p-4"
+        <button
+          type="button"
+          onClick={() => documentInputRef.current?.click()}
+          className="mb-8 flex w-full items-center justify-between rounded-xl border border-primary-container/20 bg-primary-container/10 p-4"
         >
           <div className="flex items-center gap-3">
             <div className="rounded-lg bg-primary-container p-2">
@@ -124,7 +121,7 @@ export default function ProfilePage() {
             </div>
           </div>
           <Icon name="chevron_right" className="text-primary" />
-        </Link>
+        </button>
         <input
           ref={documentInputRef}
           type="file"
@@ -140,7 +137,7 @@ export default function ProfilePage() {
           <button
             onClick={() => setTab("sender")}
             className={clsx(
-              "flex-1 rounded-xl py-3 text-label-md transition-all duration-200",
+              "flex-1 rounded-xl py-3 text-label-md transition-colors duration-200",
               tab === "sender" ? "bg-white font-bold text-primary shadow-soft-glow" : "text-on-surface-variant",
             )}
           >
@@ -149,7 +146,7 @@ export default function ProfilePage() {
           <button
             onClick={() => setTab("traveler")}
             className={clsx(
-              "flex-1 rounded-xl py-3 text-label-md transition-all duration-200",
+              "flex-1 rounded-xl py-3 text-label-md transition-colors duration-200",
               tab === "traveler" ? "bg-white font-bold text-primary shadow-soft-glow" : "text-on-surface-variant",
             )}
           >

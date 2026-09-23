@@ -28,7 +28,7 @@ export default function NouvelleAnnoncePage() {
           <button
             onClick={() => setMode("send")}
             className={clsx(
-              "flex-1 rounded-xl py-3 text-label-md font-label-md transition-all",
+              "flex-1 rounded-xl py-3 text-label-md font-label-md transition-colors",
               mode === "send" ? "bg-white font-bold text-primary shadow-soft-glow" : "text-on-surface-variant",
             )}
           >
@@ -37,7 +37,7 @@ export default function NouvelleAnnoncePage() {
           <button
             onClick={() => setMode("travel")}
             className={clsx(
-              "flex-1 rounded-xl py-3 text-label-md font-label-md transition-all",
+              "flex-1 rounded-xl py-3 text-label-md font-label-md transition-colors",
               mode === "travel" ? "bg-white font-bold text-primary shadow-soft-glow" : "text-on-surface-variant",
             )}
           >

@@ -28,6 +28,7 @@ export const searchTripsSchema = z.object({
   category: z.enum(PACKAGE_CATEGORIES).optional(),
   minWeightKg: z.coerce.number().positive().optional(),
   maxPricePerKg: z.coerce.number().positive().optional(),
+  sort: z.enum(["date", "price_asc", "price_desc", "rating"]).default("date"),
   page: z.coerce.number().int().min(1).default(1),
   pageSize: z.coerce.number().int().min(1).max(50).default(20),
 });
