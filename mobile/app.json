@@ -59,8 +59,8 @@
       "reactCompiler": true
     },
     "extra": {
-      "apiUrl": "http://192.168.11.106:4000",
-      "socketUrl": "http://192.168.11.106:4000"
+      "apiUrl": "https://colismonde-api-lj3o.onrender.com",
+      "socketUrl": "https://colismonde-api-lj3o.onrender.com"
     }
   }
 }

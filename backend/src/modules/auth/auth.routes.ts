@@ -17,18 +17,22 @@ export const authRouter = Router();
 const REFRESH_COOKIE_NAME = "cm_refresh";
 const REFRESH_COOKIE_PATH = "/api/auth";
 
+// Web et API sont sur des domaines différents en prod (vercel.app / onrender.com) : sans
+// sameSite "none", le navigateur n'envoie pas le cookie et la session saute au rechargement.
+// "none" exige secure, donc on garde "lax" en dev HTTP.
+const REFRESH_COOKIE_OPTIONS = {
+  httpOnly: true,
+  secure: env.COOKIE_SECURE,
+  sameSite: env.COOKIE_SECURE ? "none" : "lax",
+  path: REFRESH_COOKIE_PATH,
+} as const;
+
 function setRefreshCookie(res: Response, token: string, expiresAt: Date) {
-  res.cookie(REFRESH_COOKIE_NAME, token, {
-    httpOnly: true,
-    secure: env.COOKIE_SECURE,
-    sameSite: "lax",
-    path: REFRESH_COOKIE_PATH,
-    expires: expiresAt,
-  });
+  res.cookie(REFRESH_COOKIE_NAME, token, { ...REFRESH_COOKIE_OPTIONS, expires: expiresAt });
 }
 
 function clearRefreshCookie(res: Response) {
-  res.clearCookie(REFRESH_COOKIE_NAME, { path: REFRESH_COOKIE_PATH });
+  res.clearCookie(REFRESH_COOKIE_NAME, REFRESH_COOKIE_OPTIONS);
 }
 
 function isMobileClient(req: { headers: Record<string, unknown> }) {
