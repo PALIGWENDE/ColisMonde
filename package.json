@@ -12,6 +12,7 @@
     "build:shared": "npm run build --workspace shared",
     "build:backend": "npm run build --workspace backend",
     "build:web": "npm run build --workspace web",
+    "test:backend": "npm run test --workspace backend",
     "db:migrate": "npm run db:migrate --workspace backend",
     "db:seed": "npm run db:seed --workspace backend",
     "db:import-cities": "npm run db:import-cities --workspace backend",

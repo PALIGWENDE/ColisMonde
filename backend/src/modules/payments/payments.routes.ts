@@ -37,7 +37,7 @@ paymentsRouter.post(
     const payment = await prisma.payment.create({
       data: {
         bookingId: booking.id,
-        amount: booking.agreedPrice,
+        amount: booking.agreedPrice + booking.serviceFee + booking.insuranceFee,
         shippingFee: booking.agreedPrice,
         serviceFee: booking.serviceFee,
         insuranceFee: booking.insuranceFee,

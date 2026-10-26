@@ -6,7 +6,7 @@ import { validate } from "@/middleware/validate";
 import { asyncHandler } from "@/utils/asyncHandler";
 import { ApiError } from "@/utils/apiError";
 import { serializeBooking } from "@/utils/serializers";
-import { computeAgreedPrice, computeInsuranceFee } from "@/config/pricing";
+import { computeAgreedPrice, computeInsuranceFee, SERVICE_FEE_EUR } from "@/config/pricing";
 import { generateConfirmationCode } from "@/utils/jwt";
 import { createNotification } from "@/modules/notifications/notifications.service";
 import { persistUploadedFile, uploadProof, handleUploadErrors } from "@/modules/uploads/upload.middleware";
@@ -92,7 +92,7 @@ bookingsRouter.post(
         initiatorId: req.userId!,
         insuranceTier,
         insuranceFee,
-        serviceFee: 15,
+        serviceFee: SERVICE_FEE_EUR,
         agreedPrice,
       },
       include: fullInclude,
